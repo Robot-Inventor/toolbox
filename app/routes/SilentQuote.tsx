@@ -52,6 +52,10 @@ const meta = () =>
     [
         {
             title: "通知なしで引用ポスト | Toolbox"
+        },
+        {
+            content: "引用元のユーザーに通知が飛ばないように引用ポストするツールです。",
+            name: "description"
         }
     ] as const satisfies MetaDescriptor[];
 

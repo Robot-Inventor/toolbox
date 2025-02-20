@@ -28,6 +28,11 @@ const meta = () =>
     [
         {
             title: "文字数カウンター | Toolbox"
+        },
+        {
+            content:
+                "できるだけ正確に文字数をカウントするツールです。一般的な文字数カウンターと違い、絵文字を含むテキストも正確にカウントできます。",
+            name: "description"
         }
     ] as const satisfies MetaDescriptor[];
 
