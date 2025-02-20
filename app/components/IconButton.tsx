@@ -3,6 +3,7 @@ import { Icon } from "./Icon";
 import { css } from "@emotion/react";
 
 interface IconButtonProps {
+    ["aria-label"]: string;
     children: string;
 }
 
@@ -26,10 +27,12 @@ const buttonStyles = css({
     width: "2.5em"
 });
 
-const IconButton = memo(({ children, ...props }: IconButtonProps & HTMLAttributes<HTMLButtonElement>) => (
-    <button css={buttonStyles} {...props}>
-        <Icon>{children}</Icon>
-    </button>
-));
+const IconButton = memo(
+    ({ "aria-label": ariaLabel, children, ...props }: IconButtonProps & HTMLAttributes<HTMLButtonElement>) => (
+        <button css={buttonStyles} {...props}>
+            <Icon aria-label={ariaLabel}>{children}</Icon>
+        </button>
+    )
+);
 
 export { IconButton };

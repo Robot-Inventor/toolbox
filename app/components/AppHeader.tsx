@@ -78,18 +78,18 @@ const AppHeader = memo(() => {
 
     return (
         <header css={headerStyles}>
-            <IconButton popoverTarget="sidebar-menu" popoverTargetAction="show">
+            <IconButton popoverTarget="sidebar-menu" popoverTargetAction="show" aria-label="メニューを開く">
                 menu
             </IconButton>
             <div popover="auto" id="sidebar-menu" ref={sidebar} css={sidebarStyles}>
-                <IconButton popoverTarget="sidebar-menu" popoverTargetAction="hide">
+                <IconButton popoverTarget="sidebar-menu" popoverTargetAction="hide" aria-label="メニューを閉じる">
                     close
                 </IconButton>
                 <ul>
                     {toolList.map(({ icon, link, name }) => (
                         <li key={link}>
                             <Link to={link} css={toolItemStyles} onClick={closeSidebar}>
-                                <Icon>{icon}</Icon>
+                                <Icon aria-hidden>{icon}</Icon>
                                 {name}
                             </Link>
                         </li>
