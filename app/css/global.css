@@ -1,0 +1,39 @@
+@layer fonts, theme, other;
+
+@layer fonts {
+    :root {
+        font-family: "Mona Sans", "Noto Sans JP", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: normal;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+    }
+}
+
+@layer theme {
+    :root {
+        --color-surface: black;
+        --color-on-surface: white;
+        --color-on-surface-variant: #949499;
+        --color-surface-container: #0d0d0d;
+        --color-outline: #666;
+        --color-outline-variant: #222;
+    }
+}
+
+@layer other {
+    :root {
+        background: var(--color-surface);
+        color: var(--color-on-surface-variant);
+    }
+
+    body:has([popover]:popover-open) {
+        pointer-events: none;
+        user-select: none;
+    }
+
+    [popover]:popover-open {
+        pointer-events: auto;
+        user-select: text;
+    }
+}
