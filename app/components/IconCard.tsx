@@ -30,7 +30,9 @@ const titleStyles = css({
 
 const IconCard = memo(({ icon, title }: IconCardProps) => (
     <article css={wrapperStyles}>
-        <Icon css={iconStyles}>{icon}</Icon>
+        <Icon css={iconStyles} aria-hidden>
+            {icon}
+        </Icon>
         <h3 css={titleStyles}>{title}</h3>
     </article>
 ));
