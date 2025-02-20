@@ -54,7 +54,13 @@ const UuidGenerator = memo(() => {
     return (
         <>
             <ToolName>UUIDジェネレーター</ToolName>
-            <Toast open={toastVisible} onOpenChange={setToastVisible} message="コピーしました" icon="check" />
+            <Toast
+                open={toastVisible}
+                onOpenChange={setToastVisible}
+                message="コピーしました"
+                icon="check"
+                type="info"
+            />
             <fetcher.Form method="post">
                 <FilledButton>生成</FilledButton>
             </fetcher.Form>

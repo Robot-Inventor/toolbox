@@ -7,6 +7,7 @@ import { memo } from "react";
 interface ToastProps {
     icon: string;
     message: string;
+    type: "info" | "error";
     open: boolean;
     onOpenChange: (open: boolean) => void;
 }
@@ -70,25 +71,42 @@ const rootStyles = css({
     zIndex: 1
 });
 
-const iconStyles = css({
-    color: "var(--color-primary)",
-    fontSize: "1.5rem",
-    marginRight: "0.25rem"
-});
-
 const titleWrapperStyles = css({
     alignItems: "center",
     display: "flex"
 });
 
-const Toast = memo(({ icon, message, open, onOpenChange }: ToastProps) => (
+const iconStyles = css({
+    fontSize: "1.5rem",
+    marginRight: "0.25rem"
+});
+
+const iconColors = {
+    error: css({
+        color: "var(--color-error)"
+    }),
+    info: css({
+        color: "var(--color-primary)"
+    })
+} as const satisfies Record<ToastProps["type"], ReturnType<typeof css>>;
+
+const titleColors = {
+    error: css({
+        color: "var(--color-error)"
+    }),
+    info: css({
+        color: "var(--color-on-surface)"
+    })
+};
+
+const Toast = memo(({ icon, type, message, open, onOpenChange }: ToastProps) => (
     <RadixToast.Provider swipeDirection="up" duration={2000}>
         <RadixToast.Root open={open} onOpenChange={onOpenChange} css={rootStyles}>
             <div css={titleWrapperStyles}>
-                <Icon css={iconStyles} aria-hidden>
+                <Icon css={[iconStyles, iconColors[type]]} aria-hidden>
                     {icon}
                 </Icon>
-                <RadixToast.Title>{message}</RadixToast.Title>
+                <RadixToast.Title css={titleColors[type]}>{message}</RadixToast.Title>
             </div>
         </RadixToast.Root>
         <RadixToast.Viewport />

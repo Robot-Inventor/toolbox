@@ -17,6 +17,12 @@ const TOOL_LIST = [
         link: "/uuid-generator",
         name: "UUIDジェネレーター",
         routeFile: "routes/UuidGenerator.tsx"
+    },
+    {
+        icon: "format_quote",
+        link: "/silent-quote",
+        name: "通知なしで引用ポスト",
+        routeFile: "routes/SilentQuote.tsx"
     }
 ] as const satisfies Tool[];
 
