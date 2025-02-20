@@ -49,16 +49,12 @@ const UuidGenerator = memo(() => {
     const handleCopy = useCallback((uuid: string) => {
         void navigator.clipboard.writeText(uuid);
         setToastVisible(true);
-        setTimeout(() => {
-            setToastVisible(false);
-            // eslint-disable-next-line no-magic-numbers
-        }, 2000);
     }, []);
 
     return (
         <>
             <ToolName>UUIDジェネレーター</ToolName>
-            <Toast visible={toastVisible} message="コピーしました" />
+            <Toast open={toastVisible} onOpenChange={setToastVisible} message="コピーしました" icon="check" />
             <fetcher.Form method="post">
                 <FilledButton>生成</FilledButton>
             </fetcher.Form>
