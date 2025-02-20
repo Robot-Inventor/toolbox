@@ -32,7 +32,7 @@
     "@robot-inventor/eslint-config": "^8.0.4",
     "@robot-inventor/tsconfig-base": "^5.0.3",
     "@tailwindcss/vite": "^4.0.0",
-    "@types/node": "^20",
+    "@types/node": "^22.0.0",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
     "eslint": "^9.20.1",
