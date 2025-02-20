@@ -1,23 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { type FormEventHandler, memo, useCallback } from "react";
+import { type MetaDescriptor, useFetcher } from "react-router";
 import type { Route } from "./+types/CharacterCounter";
 import TextArea from "react-textarea-autosize";
 import { ToolName } from "../components/ToolName";
 import { css } from "@emotion/react";
-import { useFetcher } from "react-router";
-
-const textareaStyles = css({
-    ":focus": {
-        borderColor: "var(--color-outline)",
-        outline: "none"
-    },
-
-    border: "0.1rem solid var(--color-outline-variant)",
-    borderRadius: "0.5rem",
-    height: "10em",
-    padding: "0.5rem",
-    width: "100%"
-});
 
 interface ActionResult {
     lengthAll: number;
@@ -35,6 +22,27 @@ const clientAction = async ({ request }: Route.ClientActionArgs): Promise<Action
     const lengthWithoutNewlines = [...segmenter.segment(text.replace(/[\r\n]/gu, ""))].length;
     return { lengthAll, lengthWithoutNewlines };
 };
+
+// eslint-disable-next-line jsdoc/require-jsdoc
+const meta = () =>
+    [
+        {
+            title: "文字数カウンター | Toolbox"
+        }
+    ] as const satisfies MetaDescriptor[];
+
+const textareaStyles = css({
+    ":focus": {
+        borderColor: "var(--color-outline)",
+        outline: "none"
+    },
+
+    border: "0.1rem solid var(--color-outline-variant)",
+    borderRadius: "0.5rem",
+    height: "10em",
+    padding: "0.5rem",
+    width: "100%"
+});
 
 const CharacterCounter = memo(() => {
     const fetcher = useFetcher<ActionResult>();
@@ -65,4 +73,4 @@ const CharacterCounter = memo(() => {
 });
 
 export default CharacterCounter;
-export { clientAction };
+export { clientAction, meta };
