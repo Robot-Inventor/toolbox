@@ -20,7 +20,7 @@ const headerStyles = css({
     borderBottom: "0.1rem solid var(--color-outline-variant)",
     boxShadow: "0.1rem 0.1rem 1rem black",
     display: "flex",
-    gap: "1rem",
+    gap: "0.5rem",
     left: 0,
     padding: "0.5rem",
     position: "fixed",
