@@ -1,0 +1,4 @@
+{
+    "project": ["app/**/*.(ts|tsx)"],
+    "ignore": ["tsconfig.json"]
+}
