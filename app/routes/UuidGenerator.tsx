@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
+import { type MetaDescriptor, useFetcher } from "react-router";
 import { memo, useCallback, useState } from "react";
 import { FilledButton } from "../components/FilledButton";
 import { TextButton } from "../components/TextButton";
 import { Toast } from "../components/Toast";
 import { ToolName } from "../components/ToolName";
 import { css } from "@emotion/react";
-import { useFetcher } from "react-router";
 
 interface ActionResult {
     uuids: string[];
@@ -17,6 +17,14 @@ const UUID_COUNT = 5;
 const clientAction = (): ActionResult => ({
     uuids: Array.from({ length: UUID_COUNT }, () => crypto.randomUUID())
 });
+
+// eslint-disable-next-line jsdoc/require-jsdoc
+const meta = () =>
+    [
+        {
+            title: "UUIDジェネレーター | Toolbox"
+        }
+    ] as const satisfies MetaDescriptor[];
 
 const ulStyles = css({
     marginTop: "1rem",
@@ -75,4 +83,4 @@ const UuidGenerator = memo(() => {
 });
 
 export default UuidGenerator;
-export { clientAction };
+export { clientAction, meta };
