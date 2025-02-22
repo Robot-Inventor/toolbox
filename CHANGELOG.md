@@ -1,5 +1,13 @@
 # toolbox
 
+## 0.1.1
+
+### Patch Changes
+
+- [#20](https://github.com/Robot-Inventor/toolbox/pull/20) [`a5b9512`](https://github.com/Robot-Inventor/toolbox/commit/a5b95129daa5c16d770e00d55a1f077d28301422) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - refactor: 不要な依存関係を削除
+
+- [#21](https://github.com/Robot-Inventor/toolbox/pull/21) [`0eaa23a`](https://github.com/Robot-Inventor/toolbox/commit/0eaa23a80521e401c6bbb91bf2deddb1df139ff6) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: プリレンダリングを有効化
+
 ## 0.1.0
 
 ### Minor Changes
