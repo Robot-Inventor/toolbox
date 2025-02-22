@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.1.2
+
+### Patch Changes
+
+- [#23](https://github.com/Robot-Inventor/toolbox/pull/23) [`5d2eacb`](https://github.com/Robot-Inventor/toolbox/commit/5d2eacb96fea9c9cf9cb9eccac0d99228987472e) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - docs: 「通知なしで引用ポスト」をREADMEのツール一覧に掲載
+
 ## 0.1.1
 
 ### Patch Changes
