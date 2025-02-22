@@ -8,6 +8,7 @@ https://toolbox.roboin.io/
 
 - 文字数カウンター
 - UUIDジェネレーター
+- 通知なしで引用ポスト
 
 ## 🛠️開発
 
