@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.1.8
+
+### Patch Changes
+
+- [#65](https://github.com/Robot-Inventor/toolbox/pull/65) [`0654442`](https://github.com/Robot-Inventor/toolbox/commit/0654442abc97609fcb7aed472641cb3f411b761b) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency react-textarea-autosize to v8.5.9
+
 ## 0.1.7
 
 ### Patch Changes
