@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.1.9
+
+### Patch Changes
+
+- [#75](https://github.com/Robot-Inventor/toolbox/pull/75) [`cc79a9d`](https://github.com/Robot-Inventor/toolbox/commit/cc79a9df1dd6ceffed120ea32067118d1e2e3e1b) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react monorepo to v19.1.0
+
 ## 0.1.8
 
 ### Patch Changes
