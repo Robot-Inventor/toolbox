@@ -1,5 +1,17 @@
 # toolbox
 
+## 0.1.11
+
+### Patch Changes
+
+- [#85](https://github.com/Robot-Inventor/toolbox/pull/85) [`7e32c20`](https://github.com/Robot-Inventor/toolbox/commit/7e32c20da6b9e8ba593fb51ad5472b12c4009b3c) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency radix-ui to v1.2.0
+
+- [#90](https://github.com/Robot-Inventor/toolbox/pull/90) [`572a998`](https://github.com/Robot-Inventor/toolbox/commit/572a998d8d8b179e0cc878431817546e2097f1d0) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update dependency vite to v6.2.6 [security]
+
+- [#88](https://github.com/Robot-Inventor/toolbox/pull/88) [`15491ac`](https://github.com/Robot-Inventor/toolbox/commit/15491ac62cd76ad7b13e26f9fceafc757ee46250) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency isbot to v5.1.26
+
+- [#87](https://github.com/Robot-Inventor/toolbox/pull/87) [`c03bb92`](https://github.com/Robot-Inventor/toolbox/commit/c03bb92b27b4e55b7d19f144983c716877d03de5) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update dependency @types/react-dom to v19.1.2
+
 ## 0.1.10
 
 ### Patch Changes
