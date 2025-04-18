@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.1.12
+
+### Patch Changes
+
+- [#103](https://github.com/Robot-Inventor/toolbox/pull/103) [`e2b51a0`](https://github.com/Robot-Inventor/toolbox/commit/e2b51a0a2caa9a6c1e74cf09faa793b32193715d) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update react-router monorepo to v7.5.1
+
 ## 0.1.11
 
 ### Patch Changes
