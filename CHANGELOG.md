@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.1.13
+
+### Patch Changes
+
+- [#106](https://github.com/Robot-Inventor/toolbox/pull/106) [`e982bbf`](https://github.com/Robot-Inventor/toolbox/commit/e982bbf29310572ef18a676634f1ce4a6ebaf0fc) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency radix-ui to v1.3.3
+
 ## 0.1.12
 
 ### Patch Changes
