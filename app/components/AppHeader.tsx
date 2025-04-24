@@ -17,6 +17,7 @@ const toolList = [
 
 const headerStyles = css({
     alignItems: "center",
+    background: "var(--color-surface)",
     borderBottom: "0.1rem solid var(--color-outline-variant)",
     boxShadow: "0.1rem 0.1rem 1rem black",
     display: "flex",
