@@ -1,5 +1,15 @@
 # toolbox
 
+## 0.1.14
+
+### Patch Changes
+
+- [#118](https://github.com/Robot-Inventor/toolbox/pull/118) [`ac08459`](https://github.com/Robot-Inventor/toolbox/commit/ac08459ac18469562103163417cb96003c30daee) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - fix(deps): update react-router monorepo to v7.5.2
+
+- [#110](https://github.com/Robot-Inventor/toolbox/pull/110) [`3d82f18`](https://github.com/Robot-Inventor/toolbox/commit/3d82f18657399cb1d495e01173280a96a124f3b9) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency radix-ui to v1.3.4
+
+- [#113](https://github.com/Robot-Inventor/toolbox/pull/113) [`cf00187`](https://github.com/Robot-Inventor/toolbox/commit/cf00187049a82c43004cf5d14d789b546fedcd05) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - fix: ヘッダーの背景色が透明になっているのを修正
+
 ## 0.1.13
 
 ### Patch Changes
