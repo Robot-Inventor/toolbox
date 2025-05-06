@@ -1,5 +1,15 @@
 # toolbox
 
+## 0.1.15
+
+### Patch Changes
+
+- [#120](https://github.com/Robot-Inventor/toolbox/pull/120) [`baa13dc`](https://github.com/Robot-Inventor/toolbox/commit/baa13dccdfd2390681071f37ab0f513bdd01c9f8) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency isbot to v5.1.27
+
+- [#115](https://github.com/Robot-Inventor/toolbox/pull/115) [`f4ad92f`](https://github.com/Robot-Inventor/toolbox/commit/f4ad92f78a6add0bfce91e4d9b5c835b0c9e1cd9) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update react-router monorepo to v7.5.3
+
+- [#130](https://github.com/Robot-Inventor/toolbox/pull/130) [`ec72d48`](https://github.com/Robot-Inventor/toolbox/commit/ec72d482b2ed61d0e38c98c3f871261b09fd5ca3) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency radix-ui to v1.4.1
+
 ## 0.1.14
 
 ### Patch Changes
