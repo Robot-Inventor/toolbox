@@ -1,5 +1,19 @@
 # toolbox
 
+## 0.1.16
+
+### Patch Changes
+
+- [#136](https://github.com/Robot-Inventor/toolbox/pull/136) [`5856b21`](https://github.com/Robot-Inventor/toolbox/commit/5856b21a7ea5fb5229e98a60a50606e4319db4dc) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update react-router monorepo to v7.6.0
+
+- [#144](https://github.com/Robot-Inventor/toolbox/pull/144) [`df16c6c`](https://github.com/Robot-Inventor/toolbox/commit/df16c6c273c9f4c5047d22dd0bc9eef505d0857f) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency radix-ui to v1.4.2
+
+- [#150](https://github.com/Robot-Inventor/toolbox/pull/150) [`0e532bf`](https://github.com/Robot-Inventor/toolbox/commit/0e532bf3d874416987bc36dff9636ba725f28341) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update react-router monorepo to v7.6.2
+
+- [#138](https://github.com/Robot-Inventor/toolbox/pull/138) [`984357a`](https://github.com/Robot-Inventor/toolbox/commit/984357ae8c683ab1a73ce79514f0e48b52de950c) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react monorepo to v19.1.6
+
+- [#139](https://github.com/Robot-Inventor/toolbox/pull/139) [`2dabc7f`](https://github.com/Robot-Inventor/toolbox/commit/2dabc7fae3c0a948a74fdc16d815d688cc5a55f8) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency isbot to v5.1.28
+
 ## 0.1.15
 
 ### Patch Changes
