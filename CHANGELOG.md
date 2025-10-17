@@ -1,5 +1,13 @@
 # toolbox
 
+## 0.1.24
+
+### Patch Changes
+
+- [#249](https://github.com/Robot-Inventor/toolbox/pull/249) [`c68582f`](https://github.com/Robot-Inventor/toolbox/commit/c68582f90574f85af2a8e2de524e6961aaeb9426) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react-router monorepo to v7.9.4
+
+- [#248](https://github.com/Robot-Inventor/toolbox/pull/248) [`a11844d`](https://github.com/Robot-Inventor/toolbox/commit/a11844d68eb4120e6da21d0c9fd1d9e10f6df4bf) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react monorepo to v19.2.2
+
 ## 0.1.23
 
 ### Patch Changes
