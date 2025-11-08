@@ -1,5 +1,13 @@
 # toolbox
 
+## 0.1.25
+
+### Patch Changes
+
+- [#269](https://github.com/Robot-Inventor/toolbox/pull/269) [`9975174`](https://github.com/Robot-Inventor/toolbox/commit/99751742dc3d231f2812713b0bb6311f118fa156) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react-router monorepo to v7.9.5
+
+- [#274](https://github.com/Robot-Inventor/toolbox/pull/274) [`3395922`](https://github.com/Robot-Inventor/toolbox/commit/33959229084c388d910b3c2f99bf8931c42a3b4a) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update dependency isbot to v5.1.32
+
 ## 0.1.24
 
 ### Patch Changes
