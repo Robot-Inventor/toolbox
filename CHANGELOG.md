@@ -1,5 +1,17 @@
 # toolbox
 
+## 0.1.26
+
+### Patch Changes
+
+- [#283](https://github.com/Robot-Inventor/toolbox/pull/283) [`d8e0dbf`](https://github.com/Robot-Inventor/toolbox/commit/d8e0dbfe320ca7d241291ce8f140b801e1c49be6) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react monorepo to v19.2.7
+
+- [#299](https://github.com/Robot-Inventor/toolbox/pull/299) [`6e78c10`](https://github.com/Robot-Inventor/toolbox/commit/6e78c100c4ccb4b0f1d5a6d266b8e0aa854cc479) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react monorepo to v19.2.1
+
+- [#285](https://github.com/Robot-Inventor/toolbox/pull/285) [`a65cee9`](https://github.com/Robot-Inventor/toolbox/commit/a65cee9085a8dfdf846dc336096b1a8d5f330c95) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react-router monorepo to v7.9.6
+
+- [#300](https://github.com/Robot-Inventor/toolbox/pull/300) [`5e93260`](https://github.com/Robot-Inventor/toolbox/commit/5e93260b6554121ae5dc5e8442acb7f7301f7834) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react-router monorepo to v7.10.0
+
 ## 0.1.25
 
 ### Patch Changes
