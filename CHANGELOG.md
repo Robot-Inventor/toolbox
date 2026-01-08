@@ -1,5 +1,15 @@
 # toolbox
 
+## 0.2.0
+
+### Minor Changes
+
+- [#333](https://github.com/Robot-Inventor/toolbox/pull/333) [`a52256c`](https://github.com/Robot-Inventor/toolbox/commit/a52256c919e801e45eb5525cf912d943ad8f68d2) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: QRコードジェネレーターを追加
+
+### Patch Changes
+
+- [#330](https://github.com/Robot-Inventor/toolbox/pull/330) [`1afd3ff`](https://github.com/Robot-Inventor/toolbox/commit/1afd3ff406d2575203b63de23caa8ebeb855be69) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react-router monorepo to v7.12.0
+
 ## 0.1.28
 
 ### Patch Changes
