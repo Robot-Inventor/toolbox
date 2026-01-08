@@ -1,5 +1,4 @@
 {
     "project": ["app/**/*.(ts|tsx)"],
-    "ignore": ["tsconfig.json"],
-    "ignoreDependencies": ["@react-router/node", "isbot"]
+    "ignore": ["tsconfig.json"]
 }
