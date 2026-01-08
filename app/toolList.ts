@@ -23,6 +23,12 @@ const TOOL_LIST = [
         link: "/silent-quote",
         name: "通知なしで引用ポスト",
         routeFile: "routes/SilentQuote.tsx"
+    },
+    {
+        icon: "qr_code",
+        link: "/qr-code-generator",
+        name: "QRコードジェネレーター",
+        routeFile: "routes/QrCodeGenerator.tsx"
     }
 ] as const satisfies Tool[];
 
