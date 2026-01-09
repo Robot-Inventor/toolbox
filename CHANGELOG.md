@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.3.0
+
+### Minor Changes
+
+- [#337](https://github.com/Robot-Inventor/toolbox/pull/337) [`bf39857`](https://github.com/Robot-Inventor/toolbox/commit/bf39857c042e9d0955514433186befb27eaa8c3d) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: 「動画のみ引用ポスト」を追加
+
 ## 0.2.0
 
 ### Minor Changes
