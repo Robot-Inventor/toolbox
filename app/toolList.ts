@@ -25,6 +25,12 @@ const TOOL_LIST = [
         routeFile: "routes/SilentQuote.tsx"
     },
     {
+        icon: "movie",
+        link: "/video-quote",
+        name: "動画のみ引用ポスト",
+        routeFile: "routes/VideoQuote.tsx"
+    },
+    {
         icon: "qr_code",
         link: "/qr-code-generator",
         name: "QRコードジェネレーター",
