@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.3.1
+
+### Patch Changes
+
+- [#350](https://github.com/Robot-Inventor/toolbox/pull/350) [`724816a`](https://github.com/Robot-Inventor/toolbox/commit/724816ad09107ed3d2bbc25f4868a160086481b6) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update dependency isbot to v5.1.33
+
 ## 0.3.0
 
 ### Minor Changes
