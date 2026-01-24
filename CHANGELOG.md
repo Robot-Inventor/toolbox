@@ -1,5 +1,13 @@
 # toolbox
 
+## 0.3.2
+
+### Patch Changes
+
+- [#359](https://github.com/Robot-Inventor/toolbox/pull/359) [`783a6ea`](https://github.com/Robot-Inventor/toolbox/commit/783a6eaf886f47fff539c20ec25687ad8ff2dde4) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react-router monorepo to v7.13.0
+
+- [#356](https://github.com/Robot-Inventor/toolbox/pull/356) [`888d24c`](https://github.com/Robot-Inventor/toolbox/commit/888d24c30cad3af05d48e15f4c358c0caa3a1136) Thanks [@dependabot](https://github.com/apps/dependabot)! - chore(deps-dev): bump lodash from 4.17.21 to 4.17.23
+
 ## 0.3.1
 
 ### Patch Changes
