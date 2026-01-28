@@ -1,5 +1,5 @@
 ---
-"toolbox": patch
+"toolbox": minor
 ---
 
-Add Exif removal tool that removes metadata from images while preserving orientation
+feat: add Exif metadata removal tool with orientation preservation
