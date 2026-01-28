@@ -35,6 +35,12 @@ const TOOL_LIST = [
         link: "/qr-code-generator",
         name: "QRコードジェネレーター",
         routeFile: "routes/QrCodeGenerator.tsx"
+    },
+    {
+        icon: "image",
+        link: "/exif-remover",
+        name: "Exif削除ツール",
+        routeFile: "routes/ExifRemover.tsx"
     }
 ] as const satisfies Tool[];
 
