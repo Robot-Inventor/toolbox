@@ -1,5 +1,17 @@
 # toolbox
 
+## 0.4.0
+
+### Minor Changes
+
+- [#366](https://github.com/Robot-Inventor/toolbox/pull/366) [`4afd0b9`](https://github.com/Robot-Inventor/toolbox/commit/4afd0b94104c33942970a08d3a8a90ec28658635) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - feat: add Exif metadata removal tool with orientation preservation
+
+### Patch Changes
+
+- [#361](https://github.com/Robot-Inventor/toolbox/pull/361) [`c39ffe1`](https://github.com/Robot-Inventor/toolbox/commit/c39ffe171224954a1b95c95e82106d9f869ec3a0) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react monorepo to v19.2.4
+
+- [#360](https://github.com/Robot-Inventor/toolbox/pull/360) [`6e31683`](https://github.com/Robot-Inventor/toolbox/commit/6e31683d15225bb1d612b5a140fb495ea8d16be9) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update dependency isbot to v5.1.34
+
 ## 0.3.2
 
 ### Patch Changes
