@@ -1,5 +1,13 @@
 # toolbox
 
+## 0.4.1
+
+### Patch Changes
+
+- [#376](https://github.com/Robot-Inventor/toolbox/pull/376) [`199f01d`](https://github.com/Robot-Inventor/toolbox/commit/199f01d12a2dfe9dc5ba580ac14dbafba10c0781) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update dependency isbot to v5.1.35
+
+- [#378](https://github.com/Robot-Inventor/toolbox/pull/378) [`fff9b1a`](https://github.com/Robot-Inventor/toolbox/commit/fff9b1a497ad74838b130f3893de0052c0c658a6) Thanks [@dependabot](https://github.com/apps/dependabot)! - chore(deps): bump qs from 6.14.1 to 6.14.2
+
 ## 0.4.0
 
 ### Minor Changes
