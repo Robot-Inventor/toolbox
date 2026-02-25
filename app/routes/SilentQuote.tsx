@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { type MetaDescriptor, useFetcher } from "react-router";
-import { memo, useEffect, useState } from "react";
+import { memo, useState } from "react";
 import { toXWebStatusPath, validateXStatusUrl } from "../utils/xUrl";
 import { FilledButton } from "../components/FilledButton";
 import type { Route } from "./+types/SilentQuote";
@@ -57,12 +57,14 @@ const textFieldStyles = css({
 const UuidGenerator = memo(() => {
     const [toastVisible, setToastVisible] = useState(false);
     const fetcher = useFetcher<ActionResult>();
+    const [prevFetcherData, setPrevFetcherData] = useState(fetcher.data);
 
-    useEffect(() => {
+    if (fetcher.data !== prevFetcherData) {
+        setPrevFetcherData(fetcher.data);
         if (fetcher.data && !fetcher.data.success) {
             setToastVisible(true);
         }
-    }, [fetcher.data]);
+    }
 
     return (
         <>
