@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { type FormEventHandler, memo, useCallback } from "react";
+import { type ChangeEventHandler, memo, useCallback } from "react";
 import { type MetaDescriptor, useFetcher } from "react-router";
 import type { Route } from "./+types/CharacterCounter";
 import TextArea from "react-textarea-autosize";
@@ -52,7 +52,7 @@ const textareaStyles = css({
 const CharacterCounter = memo(() => {
     const fetcher = useFetcher<ActionResult>();
 
-    const onChangeHandler: FormEventHandler<HTMLTextAreaElement> = useCallback(
+    const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = useCallback(
         (event) => {
             const { form } = event.currentTarget;
             if (!form) throw new Error("Form not found");
