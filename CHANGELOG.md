@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.4.3
+
+### Patch Changes
+
+- [#389](https://github.com/Robot-Inventor/toolbox/pull/389) [`35029c4`](https://github.com/Robot-Inventor/toolbox/commit/35029c4bb720d9dff26a961dd247731e78b6e84c) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - chore: update vulnerable dependencies
+
 ## 0.4.2
 
 ### Patch Changes
