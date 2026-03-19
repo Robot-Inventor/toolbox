@@ -1,5 +1,13 @@
 # toolbox
 
+## 0.4.4
+
+### Patch Changes
+
+- [#407](https://github.com/Robot-Inventor/toolbox/pull/407) [`bc9f043`](https://github.com/Robot-Inventor/toolbox/commit/bc9f04327c3568725adbb3cdb8f2123f295d0150) Thanks [@dependabot](https://github.com/apps/dependabot)! - chore(deps-dev): bump flatted from 3.3.3 to 3.4.2
+
+- [#401](https://github.com/Robot-Inventor/toolbox/pull/401) [`43f1db7`](https://github.com/Robot-Inventor/toolbox/commit/43f1db74c969cff2beb386a5072d830aaf009f2f) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update dependency isbot to v5.1.36
+
 ## 0.4.3
 
 ### Patch Changes
