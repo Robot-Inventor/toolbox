@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.4.6
+
+### Patch Changes
+
+- [#420](https://github.com/Robot-Inventor/toolbox/pull/420) [`aea3ff4`](https://github.com/Robot-Inventor/toolbox/commit/aea3ff49d01cebfdfb887fbcd222943cf2fcf897) Thanks [@dependabot](https://github.com/apps/dependabot)! - chore(deps): bump yaml
+
 ## 0.4.5
 
 ### Patch Changes
