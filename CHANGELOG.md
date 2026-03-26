@@ -1,5 +1,13 @@
 # toolbox
 
+## 0.4.5
+
+### Patch Changes
+
+- [#415](https://github.com/Robot-Inventor/toolbox/pull/415) [`251bf3e`](https://github.com/Robot-Inventor/toolbox/commit/251bf3e279905c7e3b49e6ee26f44775d2aaef2b) Thanks [@dependabot](https://github.com/apps/dependabot)! - chore(deps): bump picomatch
+
+- [#414](https://github.com/Robot-Inventor/toolbox/pull/414) [`a8d0250`](https://github.com/Robot-Inventor/toolbox/commit/a8d0250845cf4610f4304eac0dbfe0f30dcd2ddc) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update react-router monorepo to v7.13.2
+
 ## 0.4.4
 
 ### Patch Changes
