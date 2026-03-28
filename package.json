@@ -2,7 +2,7 @@
   "name": "toolbox",
   "private": true,
   "type": "module",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
@@ -44,6 +44,6 @@
     "vite-tsconfig-paths": "^6.0.0"
   },
   "overrides": {
-      "zod-validation-error": "^5.0.0"
+    "zod-validation-error": "^5.0.0"
   }
 }
