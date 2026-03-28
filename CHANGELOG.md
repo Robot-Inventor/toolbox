@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.4.7
+
+### Patch Changes
+
+- [#424](https://github.com/Robot-Inventor/toolbox/pull/424) [`f399dc7`](https://github.com/Robot-Inventor/toolbox/commit/f399dc75256924f4ce3fb9bae1b776067d77c869) Thanks [@dependabot](https://github.com/apps/dependabot)! - chore(deps): bump path-to-regexp from 0.1.12 to 0.1.13
+
 ## 0.4.6
 
 ### Patch Changes
