@@ -41,6 +41,12 @@ const TOOL_LIST = [
         link: "/exif-remover",
         name: "Exif削除ツール",
         routeFile: "routes/ExifRemover.tsx"
+    },
+    {
+        icon: "difference",
+        link: "/text-diff",
+        name: "テキスト差分比較",
+        routeFile: "routes/TextDiff.tsx"
     }
 ] as const satisfies Tool[];
 

@@ -2,9 +2,8 @@
 import { type ChangeEventHandler, memo, useCallback } from "react";
 import { type MetaDescriptor, useFetcher } from "react-router";
 import type { Route } from "./+types/CharacterCounter";
-import TextArea from "react-textarea-autosize";
 import { ToolName } from "../components/ToolName";
-import { css } from "@emotion/react";
+import { TextAreaField } from "../components/TextAreaField";
 
 interface ActionResult {
     lengthAll: number;
@@ -36,19 +35,6 @@ const meta = () =>
         }
     ] as const satisfies MetaDescriptor[];
 
-const textareaStyles = css({
-    ":focus": {
-        borderColor: "var(--color-outline)",
-        outline: "none"
-    },
-
-    border: "0.1rem solid var(--color-outline-variant)",
-    borderRadius: "0.5rem",
-    height: "10em",
-    padding: "0.5rem",
-    width: "100%"
-});
-
 const CharacterCounter = memo(() => {
     const fetcher = useFetcher<ActionResult>();
 
@@ -65,7 +51,7 @@ const CharacterCounter = memo(() => {
         <>
             <ToolName>文字数カウンター</ToolName>
             <fetcher.Form method="post">
-                <TextArea css={textareaStyles} minRows={5} maxRows={30} name="text" onChange={onChangeHandler} />
+                <TextAreaField minRows={5} maxRows={30} name="text" onChange={onChangeHandler} />
             </fetcher.Form>
             {fetcher.data && (
                 <>
