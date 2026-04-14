@@ -1,7 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import { memo } from "react";
+import { type ComponentProps, memo } from "react";
+import TextArea from "react-textarea-autosize";
 import { css } from "@emotion/react";
-import TextArea, { type TextareaAutosizeProps } from "react-textarea-autosize";
+
+type TextareaAutosizeProps = ComponentProps<typeof TextArea>;
 
 const textareaStyles = css({
     ":focus": {

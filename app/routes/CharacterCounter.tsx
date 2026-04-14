@@ -2,8 +2,8 @@
 import { type ChangeEventHandler, memo, useCallback } from "react";
 import { type MetaDescriptor, useFetcher } from "react-router";
 import type { Route } from "./+types/CharacterCounter";
-import { ToolName } from "../components/ToolName";
 import { TextAreaField } from "../components/TextAreaField";
+import { ToolName } from "../components/ToolName";
 
 interface ActionResult {
     lengthAll: number;
