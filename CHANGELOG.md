@@ -1,5 +1,15 @@
 # toolbox
 
+## 0.5.0
+
+### Minor Changes
+
+- [#450](https://github.com/Robot-Inventor/toolbox/pull/450) [`74fd601`](https://github.com/Robot-Inventor/toolbox/commit/74fd601c6a4da28febe7a73b0985283e97153687) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: 差分比較ツールを追加
+
+### Patch Changes
+
+- [#451](https://github.com/Robot-Inventor/toolbox/pull/451) [`18136c3`](https://github.com/Robot-Inventor/toolbox/commit/18136c3d5be0db0a259d991a34d32ca55974942d) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - chore: 不要になったvite-tsconfig-pathsを削除
+
 ## 0.4.8
 
 ### Patch Changes
