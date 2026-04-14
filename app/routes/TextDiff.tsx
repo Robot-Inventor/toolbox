@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-/* eslint-disable jsdoc/require-jsdoc */
+/* eslint-disable jsdoc/require-jsdoc, max-lines */
 import { type ChangeEventHandler, memo, useCallback, useMemo, useState, useSyncExternalStore } from "react";
 import { FileDiff } from "@pierre/diffs/react";
 import type { MetaDescriptor } from "react-router";
