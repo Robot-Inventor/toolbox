@@ -22,18 +22,18 @@ jobs:
         steps:
             - uses: actions/checkout@v6
 
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v6
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
               with:
-                  node-version: ${{ matrix.node-version }}
+                  bun-version: latest
 
-            - run: npm ci
+            - run: bun install --frozen-lockfile
 
             - name: Create Release Pull Request or Publish to npm
               id: changesets
               uses: changesets/action@v1
               with:
-                  version: npm run ci:version
-                  publish: npm run ci:publish
+                  version: bun run ci:version
+                  publish: bun run ci:publish
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
