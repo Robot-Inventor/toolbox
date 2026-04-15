@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.5.1
+
+### Patch Changes
+
+- [#453](https://github.com/Robot-Inventor/toolbox/pull/453) [`2a9d41f`](https://github.com/Robot-Inventor/toolbox/commit/2a9d41ff1feff93533fac95edd5305ef4780f401) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: change diff theme from Tokyo Night to Pierre Dark
+
 ## 0.5.0
 
 ### Minor Changes
