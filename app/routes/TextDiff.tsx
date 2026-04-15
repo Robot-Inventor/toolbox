@@ -272,7 +272,7 @@ const DiffPreview = memo(({ diffLayout, fileDiff, hasNoDiff, isDiffEmpty }: Diff
             options={{
                 diffStyle: diffLayout,
                 overflow: "wrap",
-                theme: "tokyo-night",
+                theme: "pierre-dark",
                 themeType: "dark"
             }}
         />
