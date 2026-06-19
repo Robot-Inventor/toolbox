@@ -60,6 +60,7 @@ const hiddenSvgStyles = css({
  * @param buffer 変換するArrayBuffer
  * @returns 16進数文字列
  */
+// eslint-disable-next-line jsdoc/require-jsdoc
 const toHex = (buffer: ArrayBuffer): string =>
     Array.from(new Uint8Array(buffer))
         // eslint-disable-next-line no-magic-numbers

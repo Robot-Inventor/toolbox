@@ -76,6 +76,7 @@ const CANVAS_ORIGIN_Y = 0;
  * @param fileType The file type
  * @param setUrl The function to set the processed URL
  */
+// eslint-disable-next-line jsdoc/require-jsdoc
 const createProcessedBlob = (canvas: HTMLCanvasElement, fileType: string, setUrl: (url: string) => void): void => {
     canvas.toBlob(
         (blob) => {
@@ -94,6 +95,7 @@ const createProcessedBlob = (canvas: HTMLCanvasElement, fileType: string, setUrl
  * @param canvas The canvas element
  * @param bitmap The image bitmap
  */
+// eslint-disable-next-line jsdoc/require-jsdoc
 const drawBitmapToCanvas = (canvas: HTMLCanvasElement, bitmap: ImageBitmap): void => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
@@ -110,6 +112,7 @@ const drawBitmapToCanvas = (canvas: HTMLCanvasElement, bitmap: ImageBitmap): voi
  * @param url The URL of the processed image
  * @param filename The original filename
  */
+// eslint-disable-next-line jsdoc/require-jsdoc
 const downloadProcessedImage = (url: string, filename: string): void => {
     const link = document.createElement("a");
     link.href = url;

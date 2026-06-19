@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-/* eslint-disable jsdoc/require-jsdoc, max-lines */
+/* eslint-disable jsdoc/require-jsdoc */
 import { type ChangeEventHandler, memo, useCallback, useMemo, useState, useSyncExternalStore } from "react";
 import { FileDiff } from "@pierre/diffs/react";
 import type { MetaDescriptor } from "react-router";
@@ -65,12 +65,6 @@ const meta = () =>
     ] as const satisfies MetaDescriptor[];
 
 const subscribeToOrientation = (onStoreChange: () => void): (() => void) => {
-    if (typeof window === "undefined") {
-        return () => {
-            // No media query listener is registered during server rendering.
-        };
-    }
-
     const mediaQueryList = window.matchMedia(PORTRAIT_MEDIA_QUERY);
     mediaQueryList.addEventListener("change", onStoreChange);
     return () => {
