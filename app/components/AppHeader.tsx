@@ -71,18 +71,18 @@ const toolItemStyles = css({
 });
 
 const AppHeader = memo(() => {
-    const sidebar = useRef<HTMLDivElement>(null);
+    const sidebarRef = useRef<HTMLDivElement>(null);
     const closeSidebar = useCallback(() => {
-        if (!sidebar.current) throw new Error("Sidebar not found");
-        sidebar.current.hidePopover();
-    }, [sidebar]);
+        if (!sidebarRef.current) throw new Error("Sidebar not found");
+        sidebarRef.current.hidePopover();
+    }, [sidebarRef]);
 
     return (
         <header css={headerStyles}>
             <IconButton popoverTarget="sidebar-menu" popoverTargetAction="show" aria-label="メニューを開く">
                 menu
             </IconButton>
-            <div popover="auto" id="sidebar-menu" ref={sidebar} css={sidebarStyles}>
+            <div popover="auto" id="sidebar-menu" ref={sidebarRef} css={sidebarStyles}>
                 <IconButton popoverTarget="sidebar-menu" popoverTargetAction="hide" aria-label="メニューを閉じる">
                     close
                 </IconButton>
