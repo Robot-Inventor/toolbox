@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { type MetaDescriptor, useFetcher } from "react-router";
 import { memo, useCallback, useState } from "react";
+import { Check } from "lucide-react";
 import { FilledButton } from "../components/FilledButton";
 import { TextButton } from "../components/TextButton";
 import { Toast } from "../components/Toast";
@@ -62,7 +63,7 @@ const UuidGenerator = memo(() => {
                 open={toastVisible}
                 onOpenChange={setToastVisible}
                 message="コピーしました"
-                icon="check"
+                icon={Check}
                 type="info"
             />
             <fetcher.Form method="post">

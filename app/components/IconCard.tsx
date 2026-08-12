@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { Icon } from "./Icon";
+import type { LucideIcon } from "lucide-react";
 import { css } from "@emotion/react";
 import { memo } from "react";
 
 interface IconCardProps {
-    icon: string;
+    icon: LucideIcon;
     title: string;
 }
 
@@ -21,7 +22,8 @@ const wrapperStyles = css({
 
 const iconStyles = css({
     color: "var(--color-on-surface)",
-    fontSize: "3rem"
+    height: "3rem",
+    width: "3rem"
 });
 
 const titleStyles = css({
@@ -30,9 +32,7 @@ const titleStyles = css({
 
 const IconCard = memo(({ icon, title }: IconCardProps) => (
     <article css={wrapperStyles}>
-        <Icon css={iconStyles} aria-hidden>
-            {icon}
-        </Icon>
+        <Icon aria-hidden css={iconStyles} icon={icon} />
         <h3 css={titleStyles}>{title}</h3>
     </article>
 ));

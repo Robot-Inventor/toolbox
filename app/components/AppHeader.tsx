@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import { House, Menu, X } from "lucide-react";
 import { css, keyframes } from "@emotion/react";
 import { memo, useCallback, useRef } from "react";
 import { Icon } from "./Icon";
@@ -8,7 +9,7 @@ import { TOOL_LIST } from "../toolList";
 
 const toolList = [
     {
-        icon: "home",
+        icon: House,
         link: "/",
         name: "ホーム"
     },
@@ -79,18 +80,24 @@ const AppHeader = memo(() => {
 
     return (
         <header css={headerStyles}>
-            <IconButton popoverTarget="sidebar-menu" popoverTargetAction="show" aria-label="メニューを開く">
-                menu
-            </IconButton>
-            <div popover="auto" id="sidebar-menu" ref={sidebarRef} css={sidebarStyles}>
-                <IconButton popoverTarget="sidebar-menu" popoverTargetAction="hide" aria-label="メニューを閉じる">
-                    close
-                </IconButton>
+            <IconButton
+                aria-label="メニューを開く"
+                icon={Menu}
+                popoverTarget="sidebar-menu"
+                popoverTargetAction="show"
+            />
+            <div css={sidebarStyles} id="sidebar-menu" popover="auto" ref={sidebarRef}>
+                <IconButton
+                    aria-label="メニューを閉じる"
+                    icon={X}
+                    popoverTarget="sidebar-menu"
+                    popoverTargetAction="hide"
+                />
                 <ul>
                     {toolList.map(({ icon, link, name }) => (
                         <li key={link}>
-                            <Link to={link} css={toolItemStyles} onClick={closeSidebar}>
-                                <Icon aria-hidden>{icon}</Icon>
+                            <Link css={toolItemStyles} onClick={closeSidebar} to={link}>
+                                <Icon aria-hidden icon={icon} />
                                 {name}
                             </Link>
                         </li>

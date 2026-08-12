@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from "@emotion/react";
 import { Icon } from "./Icon";
+import type { LucideIcon } from "lucide-react";
 import { Toast as RadixToast } from "radix-ui";
 import { memo } from "react";
 
 interface ToastProps {
-    icon: string;
+    icon: LucideIcon;
     message: string;
     type: "info" | "error";
     open: boolean;
@@ -77,8 +78,9 @@ const titleWrapperStyles = css({
 });
 
 const iconStyles = css({
-    fontSize: "1.5rem",
-    marginRight: "0.25rem"
+    height: "1.5rem",
+    marginRight: "0.25rem",
+    width: "1.5rem"
 });
 
 const iconColors = {
@@ -103,9 +105,7 @@ const Toast = memo(({ icon, type, message, open, onOpenChange }: ToastProps) => 
     <RadixToast.Provider swipeDirection="up" duration={2000}>
         <RadixToast.Root open={open} onOpenChange={onOpenChange} css={rootStyles}>
             <div css={titleWrapperStyles}>
-                <Icon css={[iconStyles, iconColors[type]]} aria-hidden>
-                    {icon}
-                </Icon>
+                <Icon aria-hidden css={[iconStyles, iconColors[type]]} icon={icon} />
                 <RadixToast.Title css={titleColors[type]}>{message}</RadixToast.Title>
             </div>
         </RadixToast.Root>
