@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import { FilledButton } from "../components/FilledButton";
 import type { MetaDescriptor } from "react-router";
 import TextArea from "react-textarea-autosize";
@@ -11,7 +11,6 @@ import { css } from "@emotion/react";
 const HASH_SUFFIX_LENGTH = 8;
 const QR_SIZE = 256;
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 const meta = () =>
     [
         {
@@ -60,7 +59,6 @@ const hiddenSvgStyles = css({
  * @param buffer 変換するArrayBuffer
  * @returns 16進数文字列
  */
-// eslint-disable-next-line jsdoc/require-jsdoc
 const toHex = (buffer: ArrayBuffer): string =>
     Array.from(new Uint8Array(buffer))
         // eslint-disable-next-line no-magic-numbers
@@ -68,9 +66,9 @@ const toHex = (buffer: ArrayBuffer): string =>
         .join("");
 
 // eslint-disable-next-line max-lines-per-function
-const QrCodeGenerator = memo(() => {
+const QrCodeGenerator = (): ReactNode => {
     const [text, setText] = useState("");
-    const [hashSuffix, setHashSuffix] = useState("00000000");
+    const hashSuffixRef = useRef("00000000");
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const svgRef = useRef<SVGSVGElement>(null);
 
@@ -81,7 +79,7 @@ const QrCodeGenerator = memo(() => {
         void crypto.subtle.digest("SHA-256", data).then((digest) => {
             if (cancelled) return;
             // eslint-disable-next-line no-magic-numbers
-            setHashSuffix(toHex(digest).slice(0, HASH_SUFFIX_LENGTH));
+            hashSuffixRef.current = toHex(digest).slice(0, HASH_SUFFIX_LENGTH);
         });
 
         /**
@@ -92,30 +90,28 @@ const QrCodeGenerator = memo(() => {
         };
     }, [text]);
 
-    const fileBaseName = useMemo(() => `qr-code-${hashSuffix}`, [hashSuffix]);
-
-    const handleDownloadPng = useCallback(() => {
+    const handleDownloadPng = (): void => {
         const canvas = canvasRef.current;
         if (!canvas) return;
         const dataUrl = canvas.toDataURL("image/png");
         const link = document.createElement("a");
-        link.download = `${fileBaseName}.png`;
+        link.download = `qr-code-${hashSuffixRef.current}.png`;
         link.href = dataUrl;
         link.click();
-    }, [fileBaseName]);
+    };
 
-    const handleDownloadSvg = useCallback(() => {
+    const handleDownloadSvg = (): void => {
         const svg = svgRef.current;
         if (!svg) return;
         const serialized = new XMLSerializer().serializeToString(svg);
         const blob = new Blob([serialized], { type: "image/svg+xml;charset=utf-8" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
-        link.download = `${fileBaseName}.svg`;
+        link.download = `qr-code-${hashSuffixRef.current}.svg`;
         link.href = url;
         link.click();
         URL.revokeObjectURL(url);
-    }, [fileBaseName]);
+    };
 
     return (
         <>
@@ -140,7 +136,7 @@ const QrCodeGenerator = memo(() => {
             </div>
         </>
     );
-});
+};
 
 export default QrCodeGenerator;
 export { meta };

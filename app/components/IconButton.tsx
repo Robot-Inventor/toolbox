@@ -1,4 +1,4 @@
-import { type HTMLAttributes, memo } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import { Icon } from "./Icon";
 import type { LucideIcon } from "lucide-react";
 import { css } from "@emotion/react";
@@ -28,12 +28,14 @@ const buttonStyles = css({
     width: "2.5em"
 });
 
-const IconButton = memo(
-    ({ "aria-label": ariaLabel, icon, ...props }: IconButtonProps & HTMLAttributes<HTMLButtonElement>) => (
-        <button css={buttonStyles} {...props}>
-            <Icon aria-label={ariaLabel} icon={icon} />
-        </button>
-    )
+const IconButton = ({
+    "aria-label": ariaLabel,
+    icon,
+    ...props
+}: IconButtonProps & HTMLAttributes<HTMLButtonElement>): ReactNode => (
+    <button css={buttonStyles} {...props}>
+        <Icon aria-label={ariaLabel} icon={icon} />
+    </button>
 );
 
 export { IconButton };

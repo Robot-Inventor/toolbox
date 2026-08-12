@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
-/* eslint-disable jsdoc/require-jsdoc */
-import { type ChangeEventHandler, memo, useCallback, useMemo, useState, useSyncExternalStore } from "react";
+import { type ChangeEventHandler, type ReactNode, useState, useSyncExternalStore } from "react";
 import { FileDiff } from "@pierre/diffs/react";
 import type { MetaDescriptor } from "react-router";
 import { TextAreaField } from "../components/TextAreaField";
@@ -171,17 +170,17 @@ const useTextDiffInputs = (): TextDiffInputs => {
     const [beforeText, setBeforeText] = useState("");
     const [afterText, setAfterText] = useState("");
 
-    const onLanguageChange = useCallback<ChangeEventHandler<HTMLSelectElement>>((event) => {
+    const onLanguageChange: ChangeEventHandler<HTMLSelectElement> = (event) => {
         setLanguage(event.currentTarget.value as DiffLanguage);
-    }, []);
+    };
 
-    const onBeforeTextChange = useCallback<ChangeEventHandler<HTMLTextAreaElement>>((event) => {
+    const onBeforeTextChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setBeforeText(event.currentTarget.value);
-    }, []);
+    };
 
-    const onAfterTextChange = useCallback<ChangeEventHandler<HTMLTextAreaElement>>((event) => {
+    const onAfterTextChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setAfterText(event.currentTarget.value);
-    }, []);
+    };
 
     return { afterText, beforeText, language, onAfterTextChange, onBeforeTextChange, onLanguageChange };
 };
@@ -189,71 +188,67 @@ const useTextDiffInputs = (): TextDiffInputs => {
 const useDiffPreview = (inputs: Pick<TextDiffInputs, "afterText" | "beforeText" | "language">): DiffPreviewModel => {
     const { afterText, beforeText, language } = inputs;
     const diffLayout = useResponsiveDiffLayout();
-    const normalizedBeforeText = useMemo(() => normalizeTextForDiff(beforeText), [beforeText]);
-    const normalizedAfterText = useMemo(() => normalizeTextForDiff(afterText), [afterText]);
+    const normalizedBeforeText = normalizeTextForDiff(beforeText);
+    const normalizedAfterText = normalizeTextForDiff(afterText);
     const hasNoDiff = normalizedBeforeText === normalizedAfterText;
-    const selectedLanguage = useMemo(() => getSelectedLanguageOption(language), [language]);
-    const fileDiff = useMemo(
-        () => createFileDiff(normalizedBeforeText, normalizedAfterText, selectedLanguage),
-        [normalizedAfterText, normalizedBeforeText, selectedLanguage]
-    );
+    const selectedLanguage = getSelectedLanguageOption(language);
+    const fileDiff = createFileDiff(normalizedBeforeText, normalizedAfterText, selectedLanguage);
     const isDiffEmpty = beforeText.length === EMPTY_TEXT_LENGTH && afterText.length === EMPTY_TEXT_LENGTH;
 
     return { diffLayout, fileDiff, hasNoDiff, isDiffEmpty };
 };
 
-const LanguageSelector = memo(
-    ({ language, onLanguageChange }: Pick<TextDiffInputs, "language" | "onLanguageChange">) => (
-        <div css={controlsStyles}>
-            <label css={languageFieldStyles}>
-                <span css={fieldLabelStyles}>言語</span>
-                <select css={selectStyles} value={language} onChange={onLanguageChange}>
-                    {LANGUAGE_OPTIONS.map((option) => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
-            </label>
-        </div>
-    )
+const LanguageSelector = ({
+    language,
+    onLanguageChange
+}: Pick<TextDiffInputs, "language" | "onLanguageChange">): ReactNode => (
+    <div css={controlsStyles}>
+        <label css={languageFieldStyles}>
+            <span css={fieldLabelStyles}>言語</span>
+            <select css={selectStyles} value={language} onChange={onLanguageChange}>
+                {LANGUAGE_OPTIONS.map((option) => (
+                    <option key={option.value} value={option.value}>
+                        {option.label}
+                    </option>
+                ))}
+            </select>
+        </label>
+    </div>
 );
 
-const TextEditors = memo(
-    ({
-        afterText,
-        beforeText,
-        onAfterTextChange,
-        onBeforeTextChange
-    }: Pick<TextDiffInputs, "afterText" | "beforeText" | "onAfterTextChange" | "onBeforeTextChange">) => (
-        <div css={editorGridStyles}>
-            <section css={sectionStyles}>
-                <h3 css={fieldLabelStyles}>Before</h3>
-                <TextAreaField
-                    maxRows={MAX_TEXTAREA_ROWS}
-                    minRows={MIN_TEXTAREA_ROWS}
-                    onChange={onBeforeTextChange}
-                    placeholder="変更前のテキスト"
-                    spellCheck={false}
-                    value={beforeText}
-                />
-            </section>
-            <section css={sectionStyles}>
-                <h3 css={fieldLabelStyles}>After</h3>
-                <TextAreaField
-                    maxRows={MAX_TEXTAREA_ROWS}
-                    minRows={MIN_TEXTAREA_ROWS}
-                    onChange={onAfterTextChange}
-                    placeholder="変更後のテキスト"
-                    spellCheck={false}
-                    value={afterText}
-                />
-            </section>
-        </div>
-    )
+const TextEditors = ({
+    afterText,
+    beforeText,
+    onAfterTextChange,
+    onBeforeTextChange
+}: Pick<TextDiffInputs, "afterText" | "beforeText" | "onAfterTextChange" | "onBeforeTextChange">): ReactNode => (
+    <div css={editorGridStyles}>
+        <section css={sectionStyles}>
+            <h3 css={fieldLabelStyles}>Before</h3>
+            <TextAreaField
+                maxRows={MAX_TEXTAREA_ROWS}
+                minRows={MIN_TEXTAREA_ROWS}
+                onChange={onBeforeTextChange}
+                placeholder="変更前のテキスト"
+                spellCheck={false}
+                value={beforeText}
+            />
+        </section>
+        <section css={sectionStyles}>
+            <h3 css={fieldLabelStyles}>After</h3>
+            <TextAreaField
+                maxRows={MAX_TEXTAREA_ROWS}
+                minRows={MIN_TEXTAREA_ROWS}
+                onChange={onAfterTextChange}
+                placeholder="変更後のテキスト"
+                spellCheck={false}
+                value={afterText}
+            />
+        </section>
+    </div>
 );
 
-const DiffPreview = memo(({ diffLayout, fileDiff, hasNoDiff, isDiffEmpty }: DiffPreviewModel) => {
+const DiffPreview = ({ diffLayout, fileDiff, hasNoDiff, isDiffEmpty }: DiffPreviewModel): ReactNode => {
     if (isDiffEmpty) return <div css={emptyStateStyles}>{EMPTY_STATE_MESSAGE}</div>;
     if (hasNoDiff) return <div css={emptyStateStyles}>{NO_DIFF_MESSAGE}</div>;
 
@@ -270,9 +265,9 @@ const DiffPreview = memo(({ diffLayout, fileDiff, hasNoDiff, isDiffEmpty }: Diff
             }}
         />
     );
-});
+};
 
-const TextDiff = memo(() => {
+const TextDiff = (): ReactNode => {
     const inputs = useTextDiffInputs();
     const preview = useDiffPreview(inputs);
 
@@ -292,7 +287,7 @@ const TextDiff = memo(() => {
             </section>
         </div>
     );
-});
+};
 
 export default TextDiff;
 export { meta };

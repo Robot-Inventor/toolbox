@@ -3,7 +3,7 @@ import { css, keyframes } from "@emotion/react";
 import { Icon } from "./Icon";
 import type { LucideIcon } from "lucide-react";
 import { Toast as RadixToast } from "radix-ui";
-import { memo } from "react";
+import type { ReactNode } from "react";
 
 interface ToastProps {
     icon: LucideIcon;
@@ -101,7 +101,7 @@ const titleColors = {
     })
 };
 
-const Toast = memo(({ icon, type, message, open, onOpenChange }: ToastProps) => (
+const Toast = ({ icon, type, message, open, onOpenChange }: ToastProps): ReactNode => (
     <RadixToast.Provider swipeDirection="up" duration={2000}>
         <RadixToast.Root open={open} onOpenChange={onOpenChange} css={rootStyles}>
             <div css={titleWrapperStyles}>
@@ -111,6 +111,6 @@ const Toast = memo(({ icon, type, message, open, onOpenChange }: ToastProps) => 
         </RadixToast.Root>
         <RadixToast.Viewport />
     </RadixToast.Provider>
-));
+);
 
 export { Toast };

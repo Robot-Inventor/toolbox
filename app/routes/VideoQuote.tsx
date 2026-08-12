@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { type MetaDescriptor, useFetcher } from "react-router";
-import { memo, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { CircleAlert } from "lucide-react";
 import { FilledButton } from "../components/FilledButton";
 import type { Route } from "./+types/VideoQuote";
@@ -23,7 +23,7 @@ interface ErrorActionResult {
 
 type ActionResult = SuccessActionResult | ErrorActionResult;
 
-// eslint-disable-next-line jsdoc/require-jsdoc, max-statements
+// eslint-disable-next-line max-statements
 const clientAction = async ({ request }: Route.ClientActionArgs): Promise<ActionResult> => {
     const data = await request.formData();
     const url = data.get("url");
@@ -43,7 +43,6 @@ const clientAction = async ({ request }: Route.ClientActionArgs): Promise<Action
     return { composerUrl, convertedUrl, success: true };
 };
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 const meta = () =>
     [
         {
@@ -59,7 +58,7 @@ const textFieldStyles = css({
     marginBottom: "1rem"
 });
 
-const VideoQuote = memo(() => {
+const VideoQuote = (): ReactNode => {
     const [toastVisible, setToastVisible] = useState(false);
     const fetcher = useFetcher<ActionResult>();
     const [prevFetcherData, setPrevFetcherData] = useState(fetcher.data);
@@ -89,7 +88,7 @@ const VideoQuote = memo(() => {
             )}
         </>
     );
-});
+};
 
 export default VideoQuote;
 export { clientAction, meta };

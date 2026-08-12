@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { type InputHTMLAttributes, memo } from "react";
+import type { InputHTMLAttributes, ReactNode } from "react";
 import { css } from "@emotion/react";
 
 const wrapperStyles = css({
@@ -22,10 +22,10 @@ const inputStyles = css({
     width: "100%"
 });
 
-const TextField = memo(({ className, ...props }: InputHTMLAttributes<HTMLInputElement>) => (
+const TextField = ({ className, ...props }: InputHTMLAttributes<HTMLInputElement>): ReactNode => (
     <div css={wrapperStyles} className={className}>
         <input css={inputStyles} {...props} />
     </div>
-));
+);
 
 export { TextField };

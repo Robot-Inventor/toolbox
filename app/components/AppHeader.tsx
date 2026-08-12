@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { House, Menu, X } from "lucide-react";
+import { type ReactNode, useRef } from "react";
 import { css, keyframes } from "@emotion/react";
-import { memo, useCallback, useRef } from "react";
 import { Icon } from "./Icon";
 import { IconButton } from "./IconButton";
 import { Link } from "react-router";
@@ -71,12 +71,12 @@ const toolItemStyles = css({
     padding: "0.25rem 0.5rem"
 });
 
-const AppHeader = memo(() => {
+const AppHeader = (): ReactNode => {
     const sidebarRef = useRef<HTMLDivElement>(null);
-    const closeSidebar = useCallback(() => {
+    const closeSidebar = (): void => {
         if (!sidebarRef.current) throw new Error("Sidebar not found");
         sidebarRef.current.hidePopover();
-    }, [sidebarRef]);
+    };
 
     return (
         <header css={headerStyles}>
@@ -109,6 +109,6 @@ const AppHeader = memo(() => {
             </h1>
         </header>
     );
-});
+};
 
 export default AppHeader;

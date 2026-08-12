@@ -1,13 +1,13 @@
-/* eslint-disable jsdoc/require-jsdoc */
 /** @jsxImportSource @emotion/react */
 // eslint-disable-next-line import-x/no-unassigned-import
 import "the-new-css-reset/css/reset.css";
 // eslint-disable-next-line import-x/no-unassigned-import
 import "./css/global.css";
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResponse } from "react-router";
+import { Links, Meta, Scripts, ScrollRestoration } from "react-router";
+import App from "./components/App";
 import AppHeader from "./components/AppHeader";
-import type { JSX } from "react";
-import type { Route } from "./+types/root";
+import { ErrorBoundary } from "./components/ErrorBoundary";
+import type { ReactNode } from "react";
 import { css } from "@emotion/react";
 
 const mainStyles = css({
@@ -17,7 +17,7 @@ const mainStyles = css({
     padding: "1rem"
 });
 
-const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => (
+const Layout = ({ children }: { children: React.ReactNode }): ReactNode => (
     <html lang="ja">
         <head>
             <meta charSet="UTF-8" />
@@ -39,37 +39,6 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => (
         </body>
     </html>
 );
-
-const App = (): JSX.Element => <Outlet />;
-
-const ErrorBoundary = ({ error }: Route.ErrorBoundaryProps): JSX.Element => {
-    const notFoundStatus = 404;
-
-    let message = "Oops!";
-    let details = "An unexpected error occurred.";
-    let stack: string | null = null;
-
-    if (isRouteErrorResponse(error)) {
-        message = error.status === notFoundStatus ? "404" : "Error";
-        details =
-            error.status === notFoundStatus ? "The requested page could not be found." : error.statusText || details;
-    } else if (process.env["DEV"] && error && error instanceof Error) {
-        details = error.message;
-        stack = error.stack ?? null;
-    }
-
-    return (
-        <main className="pt-16 p-4 container mx-auto">
-            <h1>{message}</h1>
-            <p>{details}</p>
-            {stack && (
-                <pre className="w-full p-4 overflow-x-auto">
-                    <code>{stack}</code>
-                </pre>
-            )}
-        </main>
-    );
-};
 
 export default App;
 export { Layout, ErrorBoundary };

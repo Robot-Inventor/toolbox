@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { Link, type MetaDescriptor } from "react-router";
 import { IconCard } from "../components/IconCard";
+import type { ReactNode } from "react";
 import { TOOL_LIST } from "../toolList";
 import { ToolName } from "../components/ToolName";
 import { css } from "@emotion/react";
-import { memo } from "react";
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 const meta = () =>
     [
         {
@@ -20,7 +19,7 @@ const listWrapperStyles = css({
     gridTemplateColumns: "repeat(2, 1fr)"
 });
 
-const Home = memo(() => (
+const Home = (): ReactNode => (
     <>
         <ToolName>ツール一覧</ToolName>
         <div css={listWrapperStyles}>
@@ -31,7 +30,7 @@ const Home = memo(() => (
             ))}
         </div>
     </>
-));
+);
 
 export default Home;
 export { meta };

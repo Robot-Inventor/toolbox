@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { type MetaDescriptor, useFetcher } from "react-router";
-import { memo, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { toXWebStatusPath, validateXStatusUrl } from "../utils/xUrl";
 import { CircleAlert } from "lucide-react";
 import { FilledButton } from "../components/FilledButton";
@@ -23,7 +23,6 @@ interface ErrorActionResult {
 
 type ActionResult = SuccessActionResult | ErrorActionResult;
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 const clientAction = async ({ request }: Route.ClientActionArgs): Promise<ActionResult> => {
     const data = await request.formData();
     const url = data.get("url");
@@ -39,7 +38,6 @@ const clientAction = async ({ request }: Route.ClientActionArgs): Promise<Action
     return { composerUrl, convertedUrl, success: true };
 };
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 const meta = () =>
     [
         {
@@ -55,7 +53,7 @@ const textFieldStyles = css({
     marginBottom: "1rem"
 });
 
-const UuidGenerator = memo(() => {
+const UuidGenerator = (): ReactNode => {
     const [toastVisible, setToastVisible] = useState(false);
     const fetcher = useFetcher<ActionResult>();
     const [prevFetcherData, setPrevFetcherData] = useState(fetcher.data);
@@ -85,7 +83,7 @@ const UuidGenerator = memo(() => {
             )}
         </>
     );
-});
+};
 
 export default UuidGenerator;
 export { clientAction, meta };

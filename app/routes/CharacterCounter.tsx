@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { type ChangeEventHandler, memo, useCallback } from "react";
+import type { ChangeEventHandler, ReactNode } from "react";
 import { type MetaDescriptor, useFetcher } from "react-router";
 import type { Route } from "./+types/CharacterCounter";
 import { TextAreaField } from "../components/TextAreaField";
@@ -10,19 +10,18 @@ interface ActionResult {
     lengthWithoutNewlines: number;
 }
 
-// eslint-disable-next-line jsdoc/require-jsdoc
+const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
+
 const clientAction = async ({ request }: Route.ClientActionArgs): Promise<ActionResult> => {
     const data = await request.formData();
     const text = data.get("text");
     if (typeof text !== "string") return { lengthAll: 0, lengthWithoutNewlines: 0 };
 
-    const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
     const lengthAll = [...segmenter.segment(text)].length;
     const lengthWithoutNewlines = [...segmenter.segment(text.replace(/[\r\n]/gu, ""))].length;
     return { lengthAll, lengthWithoutNewlines };
 };
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 const meta = () =>
     [
         {
@@ -35,17 +34,14 @@ const meta = () =>
         }
     ] as const satisfies MetaDescriptor[];
 
-const CharacterCounter = memo(() => {
+const CharacterCounter = (): ReactNode => {
     const fetcher = useFetcher<ActionResult>();
 
-    const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = useCallback(
-        (event) => {
-            const { form } = event.currentTarget;
-            if (!form) throw new Error("Form not found");
-            void fetcher.submit(form);
-        },
-        [fetcher]
-    );
+    const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
+        const { form } = event.currentTarget;
+        if (!form) throw new Error("Form not found");
+        void fetcher.submit(form);
+    };
 
     return (
         <>
@@ -61,7 +57,7 @@ const CharacterCounter = memo(() => {
             )}
         </>
     );
-});
+};
 
 export default CharacterCounter;
 export { clientAction, meta };

@@ -1,4 +1,4 @@
-import { type HTMLAttributes, memo } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { css } from "@emotion/react";
 
@@ -12,6 +12,6 @@ const iconStyles = css({
     width: "1.25em"
 });
 
-const Icon = memo(({ icon: IconComponent, ...props }: IconProps) => <IconComponent css={iconStyles} {...props} />);
+const Icon = ({ icon: IconComponent, ...props }: IconProps): ReactNode => <IconComponent css={iconStyles} {...props} />;
 
 export { Icon };

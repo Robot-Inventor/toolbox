@@ -1,5 +1,5 @@
+import type { ReactNode } from "react";
 import { css } from "@emotion/react";
-import { memo } from "react";
 
 interface ToolNameProps {
     children: string;
@@ -12,6 +12,6 @@ const toolNameStyles = css({
     marginBottom: "1rem"
 });
 
-const ToolName = memo(({ children }: ToolNameProps) => <h2 css={toolNameStyles}>{children}</h2>);
+const ToolName = ({ children }: ToolNameProps): ReactNode => <h2 css={toolNameStyles}>{children}</h2>;
 
 export { ToolName };

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { type MetaDescriptor, useFetcher } from "react-router";
-import { memo, useCallback, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { Check } from "lucide-react";
 import { FilledButton } from "../components/FilledButton";
 import { TextButton } from "../components/TextButton";
@@ -14,12 +14,10 @@ interface ActionResult {
 
 const UUID_COUNT = 5;
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 const clientAction = (): ActionResult => ({
     uuids: Array.from({ length: UUID_COUNT }, () => crypto.randomUUID())
 });
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 const meta = () =>
     [
         {
@@ -47,14 +45,14 @@ const itemStyles = css({
     userSelect: "all"
 });
 
-const UuidGenerator = memo(() => {
+const UuidGenerator = (): ReactNode => {
     const fetcher = useFetcher<ActionResult>();
     const [toastVisible, setToastVisible] = useState(false);
 
-    const handleCopy = useCallback((uuid: string) => {
+    const handleCopy = (uuid: string): void => {
         void navigator.clipboard.writeText(uuid);
         setToastVisible(true);
-    }, []);
+    };
 
     return (
         <>
@@ -87,7 +85,7 @@ const UuidGenerator = memo(() => {
             )}
         </>
     );
-});
+};
 
 export default UuidGenerator;
 export { clientAction, meta };
