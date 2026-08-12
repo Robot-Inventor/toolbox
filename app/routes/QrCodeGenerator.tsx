@@ -68,7 +68,7 @@ const toHex = (buffer: ArrayBuffer): string =>
 // eslint-disable-next-line max-lines-per-function
 const QrCodeGenerator = (): ReactNode => {
     const [text, setText] = useState("");
-    const [hashSuffix, setHashSuffix] = useState("00000000");
+    const hashSuffixRef = useRef("00000000");
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const svgRef = useRef<SVGSVGElement>(null);
 
@@ -79,7 +79,7 @@ const QrCodeGenerator = (): ReactNode => {
         void crypto.subtle.digest("SHA-256", data).then((digest) => {
             if (cancelled) return;
             // eslint-disable-next-line no-magic-numbers
-            setHashSuffix(toHex(digest).slice(0, HASH_SUFFIX_LENGTH));
+            hashSuffixRef.current = toHex(digest).slice(0, HASH_SUFFIX_LENGTH);
         });
 
         /**
@@ -90,14 +90,12 @@ const QrCodeGenerator = (): ReactNode => {
         };
     }, [text]);
 
-    const fileBaseName = `qr-code-${hashSuffix}`;
-
     const handleDownloadPng = (): void => {
         const canvas = canvasRef.current;
         if (!canvas) return;
         const dataUrl = canvas.toDataURL("image/png");
         const link = document.createElement("a");
-        link.download = `${fileBaseName}.png`;
+        link.download = `qr-code-${hashSuffixRef.current}.png`;
         link.href = dataUrl;
         link.click();
     };
@@ -109,7 +107,7 @@ const QrCodeGenerator = (): ReactNode => {
         const blob = new Blob([serialized], { type: "image/svg+xml;charset=utf-8" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
-        link.download = `${fileBaseName}.svg`;
+        link.download = `qr-code-${hashSuffixRef.current}.svg`;
         link.href = url;
         link.click();
         URL.revokeObjectURL(url);

@@ -10,12 +10,13 @@ interface ActionResult {
     lengthWithoutNewlines: number;
 }
 
+const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
+
 const clientAction = async ({ request }: Route.ClientActionArgs): Promise<ActionResult> => {
     const data = await request.formData();
     const text = data.get("text");
     if (typeof text !== "string") return { lengthAll: 0, lengthWithoutNewlines: 0 };
 
-    const segmenter = new Intl.Segmenter("ja", { granularity: "grapheme" });
     const lengthAll = [...segmenter.segment(text)].length;
     const lengthWithoutNewlines = [...segmenter.segment(text.replace(/[\r\n]/gu, ""))].length;
     return { lengthAll, lengthWithoutNewlines };

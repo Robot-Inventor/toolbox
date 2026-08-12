@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { type ReactNode, useRef, useState } from "react";
+import { ExifDropZone } from "../components/ExifDropZone";
 import { FilledButton } from "../components/FilledButton";
 import type { MetaDescriptor } from "react-router";
 import { ToolName } from "../components/ToolName";
@@ -15,31 +16,6 @@ const meta = () =>
             name: "description"
         }
     ] as const satisfies MetaDescriptor[];
-
-const dropZoneStyles = css({
-    "&.drag-over": {
-        backgroundColor: "var(--color-surface-container-high)",
-        borderColor: "var(--color-primary)"
-    },
-
-    ":focus": {
-        borderColor: "var(--color-outline)",
-        outline: "none"
-    },
-
-    alignItems: "center",
-    border: "0.2rem dashed var(--color-outline-variant)",
-    borderRadius: "0.5rem",
-    cursor: "pointer",
-    display: "flex",
-    flexDirection: "column",
-    gap: "1rem",
-    justifyContent: "center",
-    marginBottom: "1.5rem",
-    minHeight: "12rem",
-    padding: "2rem",
-    transition: "all 0.2s ease"
-});
 
 const previewImageStyles = css({
     borderRadius: "0.5rem",
@@ -57,11 +33,6 @@ const buttonContainerStyles = css({
 
 const hiddenCanvasStyles = css({
     display: "none"
-});
-
-const messageStyles = css({
-    color: "var(--color-on-surface-variant)",
-    textAlign: "center"
 });
 
 const DEFAULT_QUALITY = 0.95;
@@ -123,7 +94,6 @@ const ExifRemover = (): ReactNode => {
         previewUrl: null as string | null,
         processedUrl: null as string | null
     });
-    const fileInputRef = useRef<HTMLInputElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     /**
@@ -154,19 +124,15 @@ const ExifRemover = (): ReactNode => {
         void processImage(file);
     };
 
-    const handleDragOver = (event: React.DragEvent<HTMLDivElement>): void => {
+    const handleDragOver = (event: React.DragEvent<HTMLLabelElement>): void => {
         event.preventDefault();
         setState((previous) => ({ ...previous, isDragging: true }));
     };
 
-    const handleDragEnd = (event: React.DragEvent<HTMLDivElement>): void => {
+    const handleDragEnd = (event: React.DragEvent<HTMLLabelElement>): void => {
         event.preventDefault();
         setState((previous) => ({ ...previous, isDragging: false }));
         handleFileSelect(event.dataTransfer.files);
-    };
-
-    const handleClick = (): void => {
-        fileInputRef.current?.click();
     };
 
     const handleDownload = (): void => {
@@ -177,32 +143,13 @@ const ExifRemover = (): ReactNode => {
     return (
         <>
             <ToolName>Exif削除ツール</ToolName>
-            <div
-                css={dropZoneStyles}
-                className={state.isDragging ? "drag-over" : ""}
+            <ExifDropZone
+                isDragging={state.isDragging}
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragEnd}
                 onDrop={handleDragEnd}
-                onClick={handleClick}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                        handleClick();
-                    }
-                }}
-            >
-                <p css={messageStyles}>画像をドラッグ&ドロップ または クリックして選択</p>
-                <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    onChange={(event) => {
-                        handleFileSelect(event.target.files);
-                    }}
-                    style={{ display: "none" }}
-                />
-            </div>
+                onFileSelect={handleFileSelect}
+            />
             {state.previewUrl && (
                 <>
                     <img src={state.previewUrl} alt="Preview" css={previewImageStyles} />
