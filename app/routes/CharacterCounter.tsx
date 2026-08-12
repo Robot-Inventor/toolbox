@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
+import type { ChangeEventHandler, ReactNode } from "react";
 import { type MetaDescriptor, useFetcher } from "react-router";
-import type { ChangeEventHandler } from "react";
 import type { Route } from "./+types/CharacterCounter";
 import { TextAreaField } from "../components/TextAreaField";
 import { ToolName } from "../components/ToolName";
@@ -33,7 +33,7 @@ const meta = () =>
         }
     ] as const satisfies MetaDescriptor[];
 
-const CharacterCounter = () => {
+const CharacterCounter = (): ReactNode => {
     const fetcher = useFetcher<ActionResult>();
 
     const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {

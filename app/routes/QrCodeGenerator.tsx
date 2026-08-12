@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
-import { useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import { FilledButton } from "../components/FilledButton";
 import type { MetaDescriptor } from "react-router";
 import TextArea from "react-textarea-autosize";
@@ -65,7 +65,8 @@ const toHex = (buffer: ArrayBuffer): string =>
         .map((value) => value.toString(16).padStart(2, "0"))
         .join("");
 
-const QrCodeGenerator = () => {
+// eslint-disable-next-line max-lines-per-function
+const QrCodeGenerator = (): ReactNode => {
     const [text, setText] = useState("");
     const [hashSuffix, setHashSuffix] = useState("00000000");
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -91,7 +92,7 @@ const QrCodeGenerator = () => {
 
     const fileBaseName = `qr-code-${hashSuffix}`;
 
-    const handleDownloadPng = () => {
+    const handleDownloadPng = (): void => {
         const canvas = canvasRef.current;
         if (!canvas) return;
         const dataUrl = canvas.toDataURL("image/png");
@@ -101,7 +102,7 @@ const QrCodeGenerator = () => {
         link.click();
     };
 
-    const handleDownloadSvg = () => {
+    const handleDownloadSvg = (): void => {
         const svg = svgRef.current;
         if (!svg) return;
         const serialized = new XMLSerializer().serializeToString(svg);

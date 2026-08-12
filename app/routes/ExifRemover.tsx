@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useRef, useState } from "react";
+import { type ReactNode, useRef, useState } from "react";
 import { FilledButton } from "../components/FilledButton";
 import type { MetaDescriptor } from "react-router";
 import { ToolName } from "../components/ToolName";
@@ -115,7 +115,8 @@ const downloadProcessedImage = (url: string, filename: string): void => {
     link.click();
 };
 
-const ExifRemover = () => {
+// eslint-disable-next-line max-lines-per-function
+const ExifRemover = (): ReactNode => {
     const [state, setState] = useState({
         isDragging: false,
         originalFile: null as File | null,
@@ -147,28 +148,28 @@ const ExifRemover = () => {
         setState({ isDragging: false, originalFile: file, previewUrl: objectUrl, processedUrl: null });
     };
 
-    const handleFileSelect = (files: FileList | null) => {
+    const handleFileSelect = (files: FileList | null): void => {
         const [file] = files ?? [];
         if (!file?.type.startsWith("image/")) return;
         void processImage(file);
     };
 
-    const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    const handleDragOver = (event: React.DragEvent<HTMLDivElement>): void => {
         event.preventDefault();
         setState((previous) => ({ ...previous, isDragging: true }));
     };
 
-    const handleDragEnd = (event: React.DragEvent<HTMLDivElement>) => {
+    const handleDragEnd = (event: React.DragEvent<HTMLDivElement>): void => {
         event.preventDefault();
         setState((previous) => ({ ...previous, isDragging: false }));
         handleFileSelect(event.dataTransfer.files);
     };
 
-    const handleClick = () => {
+    const handleClick = (): void => {
         fileInputRef.current?.click();
     };
 
-    const handleDownload = () => {
+    const handleDownload = (): void => {
         if (!state.processedUrl || !state.originalFile) return;
         downloadProcessedImage(state.processedUrl, state.originalFile.name);
     };

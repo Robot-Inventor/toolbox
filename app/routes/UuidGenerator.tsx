@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { type MetaDescriptor, useFetcher } from "react-router";
+import { type ReactNode, useState } from "react";
 import { Check } from "lucide-react";
 import { FilledButton } from "../components/FilledButton";
 import { TextButton } from "../components/TextButton";
 import { Toast } from "../components/Toast";
 import { ToolName } from "../components/ToolName";
 import { css } from "@emotion/react";
-import { useState } from "react";
 
 interface ActionResult {
     uuids: string[];
@@ -45,11 +45,11 @@ const itemStyles = css({
     userSelect: "all"
 });
 
-const UuidGenerator = () => {
+const UuidGenerator = (): ReactNode => {
     const fetcher = useFetcher<ActionResult>();
     const [toastVisible, setToastVisible] = useState(false);
 
-    const handleCopy = (uuid: string) => {
+    const handleCopy = (uuid: string): void => {
         void navigator.clipboard.writeText(uuid);
         setToastVisible(true);
     };

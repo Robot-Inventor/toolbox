@@ -1,3 +1,3 @@
-import { eslintReactConfig } from "@robot-inventor/eslint-config";
+import { eslintReactConfigNoJSDoc } from "@robot-inventor/eslint-config";
 
-export default eslintReactConfig;
+export default eslintReactConfigNoJSDoc;

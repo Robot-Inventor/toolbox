@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { type MetaDescriptor, useFetcher } from "react-router";
+import { type ReactNode, useState } from "react";
 import { toXWebStatusPath, validateXStatusUrl } from "../utils/xUrl";
 import { CircleAlert } from "lucide-react";
 import { FilledButton } from "../components/FilledButton";
@@ -8,7 +9,6 @@ import { TextField } from "../components/TextField";
 import { Toast } from "../components/Toast";
 import { ToolName } from "../components/ToolName";
 import { css } from "@emotion/react";
-import { useState } from "react";
 
 interface SuccessActionResult {
     success: true;
@@ -53,7 +53,7 @@ const textFieldStyles = css({
     marginBottom: "1rem"
 });
 
-const UuidGenerator = () => {
+const UuidGenerator = (): ReactNode => {
     const [toastVisible, setToastVisible] = useState(false);
     const fetcher = useFetcher<ActionResult>();
     const [prevFetcherData, setPrevFetcherData] = useState(fetcher.data);

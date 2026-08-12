@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Link, type MetaDescriptor } from "react-router";
 import { IconCard } from "../components/IconCard";
+import type { ReactNode } from "react";
 import { TOOL_LIST } from "../toolList";
 import { ToolName } from "../components/ToolName";
 import { css } from "@emotion/react";
@@ -18,7 +19,7 @@ const listWrapperStyles = css({
     gridTemplateColumns: "repeat(2, 1fr)"
 });
 
-const Home = () => (
+const Home = (): ReactNode => (
     <>
         <ToolName>ツール一覧</ToolName>
         <div css={listWrapperStyles}>

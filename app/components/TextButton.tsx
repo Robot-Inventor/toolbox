@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import { css } from "@emotion/react";
 
 interface ButtonProps {
@@ -23,7 +23,7 @@ const buttonStyles = css({
     padding: "0.25em 1em"
 });
 
-const TextButton = ({ children, ...props }: ButtonProps & HTMLAttributes<HTMLButtonElement>) => (
+const TextButton = ({ children, ...props }: ButtonProps & HTMLAttributes<HTMLButtonElement>): ReactNode => (
     <button css={buttonStyles} {...props}>
         {children}
     </button>

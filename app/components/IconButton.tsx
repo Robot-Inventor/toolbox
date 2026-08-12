@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import { Icon } from "./Icon";
 import type { LucideIcon } from "lucide-react";
 import { css } from "@emotion/react";
@@ -32,7 +32,7 @@ const IconButton = ({
     "aria-label": ariaLabel,
     icon,
     ...props
-}: IconButtonProps & HTMLAttributes<HTMLButtonElement>) => (
+}: IconButtonProps & HTMLAttributes<HTMLButtonElement>): ReactNode => (
     <button css={buttonStyles} {...props}>
         <Icon aria-label={ariaLabel} icon={icon} />
     </button>

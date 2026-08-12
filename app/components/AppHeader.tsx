@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { House, Menu, X } from "lucide-react";
+import { type ReactNode, useRef } from "react";
 import { css, keyframes } from "@emotion/react";
 import { Icon } from "./Icon";
 import { IconButton } from "./IconButton";
 import { Link } from "react-router";
 import { TOOL_LIST } from "../toolList";
-import { useRef } from "react";
 
 const toolList = [
     {
@@ -71,9 +71,9 @@ const toolItemStyles = css({
     padding: "0.25rem 0.5rem"
 });
 
-const AppHeader = () => {
+const AppHeader = (): ReactNode => {
     const sidebarRef = useRef<HTMLDivElement>(null);
-    const closeSidebar = () => {
+    const closeSidebar = (): void => {
         if (!sidebarRef.current) throw new Error("Sidebar not found");
         sidebarRef.current.hidePopover();
     };

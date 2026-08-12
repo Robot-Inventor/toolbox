@@ -5,7 +5,7 @@ import "the-new-css-reset/css/reset.css";
 import "./css/global.css";
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResponse } from "react-router";
 import AppHeader from "./components/AppHeader";
-import type { JSX } from "react";
+import type { ReactNode } from "react";
 import type { Route } from "./+types/root";
 import { css } from "@emotion/react";
 
@@ -16,7 +16,7 @@ const mainStyles = css({
     padding: "1rem"
 });
 
-const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => (
+const Layout = ({ children }: { children: React.ReactNode }): ReactNode => (
     <html lang="ja">
         <head>
             <meta charSet="UTF-8" />
@@ -39,9 +39,9 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => (
     </html>
 );
 
-const App = (): JSX.Element => <Outlet />;
+const App = (): ReactNode => <Outlet />;
 
-const ErrorBoundary = ({ error }: Route.ErrorBoundaryProps): JSX.Element => {
+const ErrorBoundary = ({ error }: Route.ErrorBoundaryProps): ReactNode => {
     const notFoundStatus = 404;
 
     let message = "Oops!";

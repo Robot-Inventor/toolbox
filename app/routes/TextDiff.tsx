@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { type ChangeEventHandler, useState, useSyncExternalStore } from "react";
+import { type ChangeEventHandler, type ReactNode, useState, useSyncExternalStore } from "react";
 import { FileDiff } from "@pierre/diffs/react";
 import type { MetaDescriptor } from "react-router";
 import { TextAreaField } from "../components/TextAreaField";
@@ -198,7 +198,10 @@ const useDiffPreview = (inputs: Pick<TextDiffInputs, "afterText" | "beforeText" 
     return { diffLayout, fileDiff, hasNoDiff, isDiffEmpty };
 };
 
-const LanguageSelector = ({ language, onLanguageChange }: Pick<TextDiffInputs, "language" | "onLanguageChange">) => (
+const LanguageSelector = ({
+    language,
+    onLanguageChange
+}: Pick<TextDiffInputs, "language" | "onLanguageChange">): ReactNode => (
     <div css={controlsStyles}>
         <label css={languageFieldStyles}>
             <span css={fieldLabelStyles}>言語</span>
@@ -218,7 +221,7 @@ const TextEditors = ({
     beforeText,
     onAfterTextChange,
     onBeforeTextChange
-}: Pick<TextDiffInputs, "afterText" | "beforeText" | "onAfterTextChange" | "onBeforeTextChange">) => (
+}: Pick<TextDiffInputs, "afterText" | "beforeText" | "onAfterTextChange" | "onBeforeTextChange">): ReactNode => (
     <div css={editorGridStyles}>
         <section css={sectionStyles}>
             <h3 css={fieldLabelStyles}>Before</h3>
@@ -245,7 +248,7 @@ const TextEditors = ({
     </div>
 );
 
-const DiffPreview = ({ diffLayout, fileDiff, hasNoDiff, isDiffEmpty }: DiffPreviewModel) => {
+const DiffPreview = ({ diffLayout, fileDiff, hasNoDiff, isDiffEmpty }: DiffPreviewModel): ReactNode => {
     if (isDiffEmpty) return <div css={emptyStateStyles}>{EMPTY_STATE_MESSAGE}</div>;
     if (hasNoDiff) return <div css={emptyStateStyles}>{NO_DIFF_MESSAGE}</div>;
 
@@ -264,7 +267,7 @@ const DiffPreview = ({ diffLayout, fileDiff, hasNoDiff, isDiffEmpty }: DiffPrevi
     );
 };
 
-const TextDiff = () => {
+const TextDiff = (): ReactNode => {
     const inputs = useTextDiffInputs();
     const preview = useDiffPreview(inputs);
 
