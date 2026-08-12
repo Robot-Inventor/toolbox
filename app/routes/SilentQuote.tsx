@@ -2,6 +2,7 @@
 import { type MetaDescriptor, useFetcher } from "react-router";
 import { memo, useState } from "react";
 import { toXWebStatusPath, validateXStatusUrl } from "../utils/xUrl";
+import { CircleAlert } from "lucide-react";
 import { FilledButton } from "../components/FilledButton";
 import type { Route } from "./+types/SilentQuote";
 import { TextField } from "../components/TextField";
@@ -78,7 +79,7 @@ const UuidGenerator = memo(() => {
                     open={toastVisible}
                     onOpenChange={setToastVisible}
                     message={fetcher.data.error}
-                    icon="priority_high"
+                    icon={CircleAlert}
                     type="error"
                 />
             )}

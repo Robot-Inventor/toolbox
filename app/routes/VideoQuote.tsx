@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { type MetaDescriptor, useFetcher } from "react-router";
 import { memo, useState } from "react";
+import { CircleAlert } from "lucide-react";
 import { FilledButton } from "../components/FilledButton";
 import type { Route } from "./+types/VideoQuote";
 import { TextField } from "../components/TextField";
@@ -82,7 +83,7 @@ const VideoQuote = memo(() => {
                     open={toastVisible}
                     onOpenChange={setToastVisible}
                     message={fetcher.data.error}
-                    icon="priority_high"
+                    icon={CircleAlert}
                     type="error"
                 />
             )}

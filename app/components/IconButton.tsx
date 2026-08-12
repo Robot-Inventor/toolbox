@@ -1,10 +1,11 @@
 import { type HTMLAttributes, memo } from "react";
 import { Icon } from "./Icon";
+import type { LucideIcon } from "lucide-react";
 import { css } from "@emotion/react";
 
 interface IconButtonProps {
     ["aria-label"]: string;
-    children: string;
+    icon: LucideIcon;
 }
 
 const buttonStyles = css({
@@ -28,9 +29,9 @@ const buttonStyles = css({
 });
 
 const IconButton = memo(
-    ({ "aria-label": ariaLabel, children, ...props }: IconButtonProps & HTMLAttributes<HTMLButtonElement>) => (
+    ({ "aria-label": ariaLabel, icon, ...props }: IconButtonProps & HTMLAttributes<HTMLButtonElement>) => (
         <button css={buttonStyles} {...props}>
-            <Icon aria-label={ariaLabel}>{children}</Icon>
+            <Icon aria-label={ariaLabel} icon={icon} />
         </button>
     )
 );
