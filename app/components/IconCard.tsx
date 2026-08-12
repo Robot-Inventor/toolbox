@@ -2,7 +2,6 @@
 import { Icon } from "./Icon";
 import type { LucideIcon } from "lucide-react";
 import { css } from "@emotion/react";
-import { memo } from "react";
 
 interface IconCardProps {
     icon: LucideIcon;
@@ -30,11 +29,11 @@ const titleStyles = css({
     fontSize: "1.2rem"
 });
 
-const IconCard = memo(({ icon, title }: IconCardProps) => (
+const IconCard = ({ icon, title }: IconCardProps) => (
     <article css={wrapperStyles}>
         <Icon aria-hidden css={iconStyles} icon={icon} />
         <h3 css={titleStyles}>{title}</h3>
     </article>
-));
+);
 
 export { IconCard };

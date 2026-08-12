@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { type ChangeEventHandler, memo, useCallback } from "react";
 import { type MetaDescriptor, useFetcher } from "react-router";
+import type { ChangeEventHandler } from "react";
 import type { Route } from "./+types/CharacterCounter";
 import { TextAreaField } from "../components/TextAreaField";
 import { ToolName } from "../components/ToolName";
@@ -10,7 +10,6 @@ interface ActionResult {
     lengthWithoutNewlines: number;
 }
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 const clientAction = async ({ request }: Route.ClientActionArgs): Promise<ActionResult> => {
     const data = await request.formData();
     const text = data.get("text");
@@ -22,7 +21,6 @@ const clientAction = async ({ request }: Route.ClientActionArgs): Promise<Action
     return { lengthAll, lengthWithoutNewlines };
 };
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 const meta = () =>
     [
         {
@@ -35,17 +33,14 @@ const meta = () =>
         }
     ] as const satisfies MetaDescriptor[];
 
-const CharacterCounter = memo(() => {
+const CharacterCounter = () => {
     const fetcher = useFetcher<ActionResult>();
 
-    const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = useCallback(
-        (event) => {
-            const { form } = event.currentTarget;
-            if (!form) throw new Error("Form not found");
-            void fetcher.submit(form);
-        },
-        [fetcher]
-    );
+    const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
+        const { form } = event.currentTarget;
+        if (!form) throw new Error("Form not found");
+        void fetcher.submit(form);
+    };
 
     return (
         <>
@@ -61,7 +56,7 @@ const CharacterCounter = memo(() => {
             )}
         </>
     );
-});
+};
 
 export default CharacterCounter;
 export { clientAction, meta };

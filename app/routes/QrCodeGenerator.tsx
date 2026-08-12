@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FilledButton } from "../components/FilledButton";
 import type { MetaDescriptor } from "react-router";
 import TextArea from "react-textarea-autosize";
@@ -11,7 +11,6 @@ import { css } from "@emotion/react";
 const HASH_SUFFIX_LENGTH = 8;
 const QR_SIZE = 256;
 
-// eslint-disable-next-line jsdoc/require-jsdoc
 const meta = () =>
     [
         {
@@ -60,15 +59,13 @@ const hiddenSvgStyles = css({
  * @param buffer 変換するArrayBuffer
  * @returns 16進数文字列
  */
-// eslint-disable-next-line jsdoc/require-jsdoc
 const toHex = (buffer: ArrayBuffer): string =>
     Array.from(new Uint8Array(buffer))
         // eslint-disable-next-line no-magic-numbers
         .map((value) => value.toString(16).padStart(2, "0"))
         .join("");
 
-// eslint-disable-next-line max-lines-per-function
-const QrCodeGenerator = memo(() => {
+const QrCodeGenerator = () => {
     const [text, setText] = useState("");
     const [hashSuffix, setHashSuffix] = useState("00000000");
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -92,9 +89,9 @@ const QrCodeGenerator = memo(() => {
         };
     }, [text]);
 
-    const fileBaseName = useMemo(() => `qr-code-${hashSuffix}`, [hashSuffix]);
+    const fileBaseName = `qr-code-${hashSuffix}`;
 
-    const handleDownloadPng = useCallback(() => {
+    const handleDownloadPng = () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
         const dataUrl = canvas.toDataURL("image/png");
@@ -102,9 +99,9 @@ const QrCodeGenerator = memo(() => {
         link.download = `${fileBaseName}.png`;
         link.href = dataUrl;
         link.click();
-    }, [fileBaseName]);
+    };
 
-    const handleDownloadSvg = useCallback(() => {
+    const handleDownloadSvg = () => {
         const svg = svgRef.current;
         if (!svg) return;
         const serialized = new XMLSerializer().serializeToString(svg);
@@ -115,7 +112,7 @@ const QrCodeGenerator = memo(() => {
         link.href = url;
         link.click();
         URL.revokeObjectURL(url);
-    }, [fileBaseName]);
+    };
 
     return (
         <>
@@ -140,7 +137,7 @@ const QrCodeGenerator = memo(() => {
             </div>
         </>
     );
-});
+};
 
 export default QrCodeGenerator;
 export { meta };

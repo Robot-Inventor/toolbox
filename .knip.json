@@ -1,3 +1,4 @@
 {
-    "project": ["app/**/*.(ts|tsx)"]
+    "project": ["app/**/*.(ts|tsx)"],
+    "ignoreDependencies": ["@babel/preset-typescript", "babel-plugin-react-compiler"]
 }

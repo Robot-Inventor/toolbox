@@ -1,4 +1,4 @@
-import { type HTMLAttributes, memo } from "react";
+import type { HTMLAttributes } from "react";
 import { css } from "@emotion/react";
 
 interface ButtonProps {
@@ -23,10 +23,10 @@ const buttonStyles = css({
     padding: "0.25em 1em"
 });
 
-const FilledButton = memo(({ children, ...props }: ButtonProps & HTMLAttributes<HTMLButtonElement>) => (
+const FilledButton = ({ children, ...props }: ButtonProps & HTMLAttributes<HTMLButtonElement>) => (
     <button css={buttonStyles} {...props}>
         {children}
     </button>
-));
+);
 
 export { FilledButton };

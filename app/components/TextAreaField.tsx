@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { type ComponentProps, memo } from "react";
+import type { ComponentProps } from "react";
 import TextArea from "react-textarea-autosize";
 import { css } from "@emotion/react";
 
@@ -17,8 +17,8 @@ const textareaStyles = css({
     width: "100%"
 });
 
-const TextAreaField = memo(({ className, ...props }: TextareaAutosizeProps) => (
+const TextAreaField = ({ className, ...props }: TextareaAutosizeProps) => (
     <TextArea css={textareaStyles} className={className} {...props} />
-));
+);
 
 export { TextAreaField };
