@@ -18,7 +18,7 @@ const meta = () =>
             title: "QRコードジェネレーター | Toolbox"
         },
         {
-            content: "入力したテキストをリアルタイムでQRコードに変換し、PNGまたはSVGで保存できます。",
+            content: "QRコードを生成します。PNGまたはSVGで保存できます。",
             name: "description"
         }
     ] as const satisfies MetaDescriptor[];

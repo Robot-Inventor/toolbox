@@ -58,8 +58,7 @@ const meta = () =>
             title: "テキスト差分比較 | Toolbox"
         },
         {
-            content:
-                "Markdown / TypeScript / HTML / CSS の差分を @pierre/diffs で比較できるツールです。横長では split、縦長では stacked 相当の表示を使います。",
+            content: "テキストの差分を比較するツールです。",
             name: "description"
         }
     ] as const satisfies MetaDescriptor[];

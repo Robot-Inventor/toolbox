@@ -25,7 +25,7 @@ const meta = () =>
             title: "UUIDジェネレーター | Toolbox"
         },
         {
-            content: "crypt.randomUUID()を使ってUUIDを生成するツールです。",
+            content: "UUIDを生成するツールです。",
             name: "description"
         }
     ] as const satisfies MetaDescriptor[];
