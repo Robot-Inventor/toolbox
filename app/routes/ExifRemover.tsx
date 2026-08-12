@@ -12,8 +12,7 @@ const meta = () =>
             title: "Exif削除ツール | Toolbox"
         },
         {
-            content:
-                "画像のExif情報を削除するツールです。orientationなど画像の見た目に影響する重要なプロパティは保持します。",
+            content: "画像のExif情報を削除するツールです。画像の見た目に影響するプロパティは維持します。",
             name: "description"
         }
     ] as const satisfies MetaDescriptor[];
