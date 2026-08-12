@@ -1,5 +1,17 @@
 # toolbox
 
+## 0.7.0
+
+### Minor Changes
+
+- [#467](https://github.com/Robot-Inventor/toolbox/pull/467) [`9203151`](https://github.com/Robot-Inventor/toolbox/commit/92031510bd8e16efbd74d0fad078aea597a5386d) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: use Lucide instead of Material Symbols
+
+- [#471](https://github.com/Robot-Inventor/toolbox/pull/471) [`885430b`](https://github.com/Robot-Inventor/toolbox/commit/885430bc8af6c0899b7c9276c490e53858c9f2e1) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - perf: enable React Compiler
+
+### Patch Changes
+
+- [#466](https://github.com/Robot-Inventor/toolbox/pull/466) [`7809552`](https://github.com/Robot-Inventor/toolbox/commit/7809552fed88417458137164cf6a046f4c334ee0) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: update tool descriptions
+
 ## 0.6.0
 
 ### Minor Changes
