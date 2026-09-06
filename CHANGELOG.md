@@ -1,5 +1,11 @@
 # toolbox
 
+## 0.8.0
+
+### Minor Changes
+
+- [#476](https://github.com/Robot-Inventor/toolbox/pull/476) [`a1d499e`](https://github.com/Robot-Inventor/toolbox/commit/a1d499ed0e8daf74978d42506ea08db37522f80d) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: JSONの差分表示に対応
+
 ## 0.7.0
 
 ### Minor Changes
