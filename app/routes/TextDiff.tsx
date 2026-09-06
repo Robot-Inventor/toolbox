@@ -7,7 +7,7 @@ import { ToolName } from "../components/ToolName";
 import { css } from "@emotion/react";
 import { parseDiffFromFile } from "@pierre/diffs";
 
-type DiffLanguage = "markdown" | "typescript" | "html" | "css";
+type DiffLanguage = "markdown" | "typescript" | "html" | "css" | "json";
 type DiffLayout = "split" | "unified";
 type FileDiffData = ReturnType<typeof parseDiffFromFile>;
 
@@ -48,7 +48,8 @@ const LANGUAGE_OPTIONS = [
     { extension: "md", label: "Markdown", value: "markdown" },
     { extension: "ts", label: "TypeScript", value: "typescript" },
     { extension: "html", label: "HTML", value: "html" },
-    { extension: "css", label: "CSS", value: "css" }
+    { extension: "css", label: "CSS", value: "css" },
+    { extension: "json", label: "JSON", value: "json" }
 ] as const satisfies readonly LanguageOption[];
 
 const meta = () =>
