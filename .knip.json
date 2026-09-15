@@ -1,4 +1,10 @@
 {
     "project": ["app/**/*.(ts|tsx)"],
-    "ignoreDependencies": ["@babel/preset-typescript", "babel-plugin-react-compiler"]
+    "ignoreDependencies": [
+        "@babel/preset-typescript",
+        "babel-plugin-react-compiler",
+        "eslint-plugin-import-x",
+        "eslint-plugin-jsdoc",
+        "oxlint-plugin-react-doctor"
+    ]
 }

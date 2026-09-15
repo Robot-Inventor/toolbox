@@ -1,16 +1,10 @@
 {
-  "extends": "@robot-inventor/tsconfig-base/react-emotion.json",
-  "compilerOptions": {
-    "rootDir": null,
-    "rootDirs": [
-      ".",
-      "./.react-router/types"
-    ],
-    "strictNullChecks": true,
-    "strict": true,
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+    "extends": "@robot-inventor/tsconfig-base/react-emotion.json",
+    "compilerOptions": {
+        "rootDir": null,
+        "rootDirs": [".", "./.react-router/types"],
+        "strictNullChecks": true,
+        "strict": true
+    },
+    "include": ["**/*.ts", "**/*.tsx"]
 }
