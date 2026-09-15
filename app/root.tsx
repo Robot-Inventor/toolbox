@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "the-new-css-reset/css/reset.css";
-// eslint-disable-next-line import-x/no-unassigned-import
+// oxlint-disable-next-line import-x/no-unassigned-import
 import "./css/global.css";
 import { Links, Meta, Scripts, ScrollRestoration } from "react-router";
 import App from "./components/App";

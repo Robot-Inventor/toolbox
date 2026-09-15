@@ -61,11 +61,11 @@ const hiddenSvgStyles = css({
  */
 const toHex = (buffer: ArrayBuffer): string =>
     Array.from(new Uint8Array(buffer))
-        // eslint-disable-next-line no-magic-numbers
+        // oxlint-disable-next-line no-magic-numbers
         .map((value) => value.toString(16).padStart(2, "0"))
         .join("");
 
-// eslint-disable-next-line max-lines-per-function
+// oxlint-disable-next-line max-lines-per-function
 const QrCodeGenerator = (): ReactNode => {
     const [text, setText] = useState("");
     const hashSuffixRef = useRef("00000000");
@@ -78,7 +78,7 @@ const QrCodeGenerator = (): ReactNode => {
         const data = encoder.encode(text);
         void crypto.subtle.digest("SHA-256", data).then((digest) => {
             if (cancelled) return;
-            // eslint-disable-next-line no-magic-numbers
+            // oxlint-disable-next-line no-magic-numbers
             hashSuffixRef.current = toHex(digest).slice(0, HASH_SUFFIX_LENGTH);
         });
 

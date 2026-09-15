@@ -86,7 +86,7 @@ const downloadProcessedImage = (url: string, filename: string): void => {
     link.click();
 };
 
-// eslint-disable-next-line max-lines-per-function
+// oxlint-disable-next-line max-lines-per-function
 const ExifRemover = (): ReactNode => {
     const [state, setState] = useState({
         isDragging: false,

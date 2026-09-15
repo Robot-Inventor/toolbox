@@ -23,7 +23,7 @@ interface ErrorActionResult {
 
 type ActionResult = SuccessActionResult | ErrorActionResult;
 
-// eslint-disable-next-line max-statements
+// oxlint-disable-next-line max-statements
 const clientAction = async ({ request }: Route.ClientActionArgs): Promise<ActionResult> => {
     const data = await request.formData();
     const url = data.get("url");
