@@ -1,5 +1,13 @@
 # toolbox
 
+## 0.8.1
+
+### Patch Changes
+
+- [#482](https://github.com/Robot-Inventor/toolbox/pull/482) [`cc03df0`](https://github.com/Robot-Inventor/toolbox/commit/cc03df0c748f25e61563544c7787b7609e63c1d3) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - perf: use Rust-based React Compiler
+
+- [#481](https://github.com/Robot-Inventor/toolbox/pull/481) [`17f8ba6`](https://github.com/Robot-Inventor/toolbox/commit/17f8ba670a4371f69dc37ebbb4f7b4af11f0c3c9) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: テキスト差分比較のパスを`/text-diff`から`/diff`に変更
+
 ## 0.8.0
 
 ### Minor Changes
