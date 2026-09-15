@@ -268,7 +268,7 @@ const DiffPreview = ({ diffLayout, fileDiff, hasNoDiff, isDiffEmpty }: DiffPrevi
     );
 };
 
-const TextDiff = (): ReactNode => {
+const Diff = (): ReactNode => {
     const inputs = useTextDiffInputs();
     const preview = useDiffPreview(inputs);
 
@@ -290,5 +290,5 @@ const TextDiff = (): ReactNode => {
     );
 };
 
-export default TextDiff;
+export default Diff;
 export { meta };
