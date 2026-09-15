@@ -46,9 +46,9 @@ const TOOL_LIST = [
     },
     {
         icon: Diff,
-        link: "/text-diff",
+        link: "/diff",
         name: "テキスト差分比較",
-        routeFile: "routes/TextDiff.tsx"
+        routeFile: "routes/Diff.tsx"
     }
 ] as const satisfies Tool[];
 
