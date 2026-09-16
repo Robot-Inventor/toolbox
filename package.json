@@ -16,11 +16,13 @@
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
-    "@pierre/diffs": "^1.1.15",
+    "@pierre/diffs": "^1.4.2",
     "@react-router/node": "^8.0.0",
     "@react-router/serve": "^8.0.0",
+    "@vscode/vscode-languagedetection": "1.0.23",
     "isbot": "^5",
     "lucide-react": "^1.31.0",
+    "modern-screenshot": "^4.7.0",
     "qrcode.react": "^4.2.0",
     "radix-ui": "^1.1.3",
     "react": "^19.0.0",
@@ -30,7 +32,6 @@
     "the-new-css-reset": "^1.11.3"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^8.0.1",
     "@changesets/changelog-github": "^1.0.0",
     "@changesets/cli": "^3.0.0",
     "@react-router/dev": "^8.0.0",
@@ -39,8 +40,7 @@
     "@types/node": "^26.0.0",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
-    "@vitejs/plugin-react": "^6.1.1",
-    "babel-plugin-react-compiler": "^1.0.0",
+    "@vitejs/plugin-react": "6.1.1",
     "knip": "^6.0.0",
     "oxc-transform-react": "^0.150.0",
     "oxlint": "^1.83.0",
