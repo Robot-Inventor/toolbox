@@ -1,4 +1,4 @@
-import { Diff, Film, Image, type LucideIcon, QrCode, Quote, Shuffle, Type } from "lucide-react";
+import { CodeXml, Diff, Film, Image, type LucideIcon, QrCode, Quote, Shuffle, Type } from "lucide-react";
 
 interface Tool {
     icon: LucideIcon;
@@ -43,6 +43,12 @@ const TOOL_LIST = [
         link: "/exif-remover",
         name: "Exif削除ツール",
         routeFile: "routes/ExifRemover.tsx"
+    },
+    {
+        icon: CodeXml,
+        link: "/code-screenshot",
+        name: "コードスクリーンショット",
+        routeFile: "routes/CodeScreenshot.tsx"
     },
     {
         icon: Diff,
