@@ -1,12 +1,11 @@
-/** @jsxImportSource @emotion/react */
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 import { type ReactNode, useEffect, useRef, useState } from "react";
+import { buttonRowStyles, hiddenSvgStyles, qrWrapperStyles, textAreaStyles } from "./QrCodeGenerator.css";
 import { FilledButton } from "../components/FilledButton";
 import type { MetaDescriptor } from "react-router";
 import TextArea from "react-textarea-autosize";
 import { TextButton } from "../components/TextButton";
 import { ToolName } from "../components/ToolName";
-import { css } from "@emotion/react";
 
 const HASH_SUFFIX_LENGTH = 8;
 const QR_SIZE = 256;
@@ -21,38 +20,6 @@ const meta = () =>
             name: "description"
         }
     ] as const satisfies MetaDescriptor[];
-
-const textAreaStyles = css({
-    ":focus": {
-        borderColor: "var(--color-outline)",
-        outline: "none"
-    },
-
-    border: "0.1rem solid var(--color-outline-variant)",
-    borderRadius: "0.5rem",
-    marginBottom: "1.5rem",
-    padding: "0.5rem",
-    width: "100%"
-});
-
-const qrWrapperStyles = css({
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "column",
-    gap: "0.75rem"
-});
-
-const buttonRowStyles = css({
-    display: "flex",
-    gap: "0.75rem"
-});
-
-const hiddenSvgStyles = css({
-    height: 0,
-    overflow: "hidden",
-    pointerEvents: "none",
-    width: 0
-});
 
 /**
  * ArrayBufferを16進数文字列に変換する
@@ -117,7 +84,7 @@ const QrCodeGenerator = (): ReactNode => {
         <>
             <ToolName>QRコードジェネレーター</ToolName>
             <TextArea
-                css={textAreaStyles}
+                className={textAreaStyles}
                 minRows={4}
                 maxRows={12}
                 value={text}
@@ -126,13 +93,13 @@ const QrCodeGenerator = (): ReactNode => {
                     setText(event.currentTarget.value);
                 }}
             />
-            <div css={qrWrapperStyles}>
+            <div className={qrWrapperStyles}>
                 <QRCodeCanvas ref={canvasRef} value={text} size={QR_SIZE} marginSize={4} />
-                <div css={buttonRowStyles}>
+                <div className={buttonRowStyles}>
                     <FilledButton onClick={handleDownloadPng}>PNGをダウンロード</FilledButton>
                     <TextButton onClick={handleDownloadSvg}>SVGをダウンロード</TextButton>
                 </div>
-                <QRCodeSVG ref={svgRef} value={text} size={QR_SIZE} marginSize={4} css={hiddenSvgStyles} />
+                <QRCodeSVG ref={svgRef} value={text} size={QR_SIZE} marginSize={4} className={hiddenSvgStyles} />
             </div>
         </>
     );

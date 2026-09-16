@@ -1,30 +1,12 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import { css } from "@emotion/react";
+import { buttonStyles } from "./FilledButton.css";
 
 interface ButtonProps {
     children?: string;
 }
 
-const buttonStyles = css({
-    ":focus-visible": {
-        filter: "brightness(0.9)",
-        outline: "0.1rem solid var(--color-on-surface)",
-        outlineOffset: "0.1rem"
-    },
-
-    ":hover": {
-        filter: "brightness(0.9)"
-    },
-
-    background: "var(--color-on-surface)",
-    borderRadius: "0.25em",
-    color: "var(--color-surface)",
-    cursor: "pointer",
-    padding: "0.25em 1em"
-});
-
 const FilledButton = ({ children, ...props }: ButtonProps & HTMLAttributes<HTMLButtonElement>): ReactNode => (
-    <button css={buttonStyles} {...props}>
+    <button className={buttonStyles} {...props}>
         {children}
     </button>
 );

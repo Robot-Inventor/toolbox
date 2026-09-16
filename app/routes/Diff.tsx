@@ -1,10 +1,19 @@
-/** @jsxImportSource @emotion/react */
 import { type ChangeEventHandler, type ReactNode, useState, useSyncExternalStore } from "react";
+import {
+    controlsStyles,
+    diffStyles,
+    editorGridStyles,
+    emptyStateStyles,
+    fieldLabelStyles,
+    languageFieldStyles,
+    pageStyles,
+    sectionStyles,
+    selectStyles
+} from "./Diff.css";
 import { FileDiff } from "@pierre/diffs/react";
 import type { MetaDescriptor } from "react-router";
 import { TextAreaField } from "../components/TextAreaField";
 import { ToolName } from "../components/ToolName";
-import { css } from "@emotion/react";
 import { parseDiffFromFile } from "@pierre/diffs";
 
 type DiffLanguage = "markdown" | "typescript" | "html" | "css" | "json";
@@ -101,71 +110,6 @@ const createFileDiff = (beforeText: string, afterText: string, selectedLanguage:
         }
     );
 
-const pageStyles = css({
-    display: "grid",
-    gap: "1.25rem",
-    left: "50%",
-    position: "relative",
-    transform: "translateX(-50%)",
-    width: "min(96rem, calc(100vw - 2rem))"
-});
-
-const controlsStyles = css({
-    display: "grid",
-    gap: "0.5rem"
-});
-
-const languageFieldStyles = css({
-    display: "grid",
-    gap: "0.5rem",
-    width: "fit-content"
-});
-
-const fieldLabelStyles = css({
-    color: "var(--color-on-surface)",
-    fontSize: "0.95rem",
-    fontWeight: 700
-});
-
-const selectStyles = css({
-    ":focus": {
-        borderColor: "var(--color-outline)",
-        outline: "none"
-    },
-
-    background: "var(--color-surface-container)",
-    border: "0.1rem solid var(--color-outline-variant)",
-    borderRadius: "0.5rem",
-    color: "var(--color-on-surface)",
-    minWidth: "12rem",
-    padding: "0.6rem 0.75rem"
-});
-
-const editorGridStyles = css({
-    "@media (orientation: landscape)": {
-        gridTemplateColumns: "repeat(2, minmax(0, 1fr))"
-    },
-
-    display: "grid",
-    gap: "1rem",
-    gridTemplateColumns: "minmax(0, 1fr)"
-});
-
-const sectionStyles = css({
-    display: "grid",
-    gap: "0.5rem"
-});
-
-const emptyStateStyles = css({
-    color: "var(--color-on-surface-variant)",
-    minHeight: "4rem"
-});
-
-const diffStyles = css({
-    display: "block",
-    width: "100%"
-});
-
 const useTextDiffInputs = (): TextDiffInputs => {
     const [language, setLanguage] = useState<DiffLanguage>(DEFAULT_LANGUAGE);
     const [beforeText, setBeforeText] = useState("");
@@ -203,10 +147,10 @@ const LanguageSelector = ({
     language,
     onLanguageChange
 }: Pick<TextDiffInputs, "language" | "onLanguageChange">): ReactNode => (
-    <div css={controlsStyles}>
-        <label css={languageFieldStyles}>
-            <span css={fieldLabelStyles}>言語</span>
-            <select css={selectStyles} value={language} onChange={onLanguageChange}>
+    <div className={controlsStyles}>
+        <label className={languageFieldStyles}>
+            <span className={fieldLabelStyles}>言語</span>
+            <select className={selectStyles} value={language} onChange={onLanguageChange}>
                 {LANGUAGE_OPTIONS.map((option) => (
                     <option key={option.value} value={option.value}>
                         {option.label}
@@ -223,9 +167,9 @@ const TextEditors = ({
     onAfterTextChange,
     onBeforeTextChange
 }: Pick<TextDiffInputs, "afterText" | "beforeText" | "onAfterTextChange" | "onBeforeTextChange">): ReactNode => (
-    <div css={editorGridStyles}>
-        <section css={sectionStyles}>
-            <h3 css={fieldLabelStyles}>Before</h3>
+    <div className={editorGridStyles}>
+        <section className={sectionStyles}>
+            <h3 className={fieldLabelStyles}>Before</h3>
             <TextAreaField
                 maxRows={MAX_TEXTAREA_ROWS}
                 minRows={MIN_TEXTAREA_ROWS}
@@ -235,8 +179,8 @@ const TextEditors = ({
                 value={beforeText}
             />
         </section>
-        <section css={sectionStyles}>
-            <h3 css={fieldLabelStyles}>After</h3>
+        <section className={sectionStyles}>
+            <h3 className={fieldLabelStyles}>After</h3>
             <TextAreaField
                 maxRows={MAX_TEXTAREA_ROWS}
                 minRows={MIN_TEXTAREA_ROWS}
@@ -250,12 +194,12 @@ const TextEditors = ({
 );
 
 const DiffPreview = ({ diffLayout, fileDiff, hasNoDiff, isDiffEmpty }: DiffPreviewModel): ReactNode => {
-    if (isDiffEmpty) return <div css={emptyStateStyles}>{EMPTY_STATE_MESSAGE}</div>;
-    if (hasNoDiff) return <div css={emptyStateStyles}>{NO_DIFF_MESSAGE}</div>;
+    if (isDiffEmpty) return <div className={emptyStateStyles}>{EMPTY_STATE_MESSAGE}</div>;
+    if (hasNoDiff) return <div className={emptyStateStyles}>{NO_DIFF_MESSAGE}</div>;
 
     return (
         <FileDiff
-            css={diffStyles}
+            className={diffStyles}
             disableWorkerPool
             fileDiff={fileDiff}
             options={{
@@ -273,7 +217,7 @@ const Diff = (): ReactNode => {
     const preview = useDiffPreview(inputs);
 
     return (
-        <div css={pageStyles}>
+        <div className={pageStyles}>
             <ToolName>テキスト差分比較</ToolName>
             <LanguageSelector language={inputs.language} onLanguageChange={inputs.onLanguageChange} />
             <TextEditors
@@ -282,8 +226,8 @@ const Diff = (): ReactNode => {
                 onAfterTextChange={inputs.onAfterTextChange}
                 onBeforeTextChange={inputs.onBeforeTextChange}
             />
-            <section css={sectionStyles}>
-                <h3 css={fieldLabelStyles}>Diff</h3>
+            <section className={sectionStyles}>
+                <h3 className={fieldLabelStyles}>Diff</h3>
                 <DiffPreview {...preview} />
             </section>
         </div>

@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { reactRouter } from "@react-router/dev/vite";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 // React Router provides the Fast Refresh wrapper for route modules.
 // Keep the Rust Compiler and JSX transforms, but avoid installing a second HMR wrapper.
@@ -15,5 +16,5 @@ const reactCompilerPlugins = react({ compiler: true }).filter(
 );
 
 export default defineConfig({
-    plugins: [...reactCompilerPlugins, reactRouter()]
+    plugins: [...reactCompilerPlugins, vanillaExtractPlugin(), reactRouter()]
 });
