@@ -4,6 +4,7 @@ import { Links, Meta, Scripts, ScrollRestoration } from "react-router";
 import App from "./components/App";
 import AppHeader from "./components/AppHeader";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import { Toast } from "./components/Toast";
 import { mainStyles } from "./root.css";
 
 const Layout = ({ children }: { children: React.ReactNode }): React.ReactNode => (
@@ -23,6 +24,7 @@ const Layout = ({ children }: { children: React.ReactNode }): React.ReactNode =>
         <body>
             <AppHeader />
             <main className={mainStyles}>{children}</main>
+            <Toast />
             <ScrollRestoration />
             <Scripts />
         </body>

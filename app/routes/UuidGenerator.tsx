@@ -1,11 +1,10 @@
 import { type MetaDescriptor, useFetcher } from "react-router";
-import { type ReactNode, useState } from "react";
 import { itemStyles, liStyles, ulStyles } from "./UuidGenerator.css";
-import { Check } from "lucide-react";
 import { FilledButton } from "../components/FilledButton";
+import type { ReactNode } from "react";
 import { TextButton } from "../components/TextButton";
-import { Toast } from "../components/Toast";
 import { ToolName } from "../components/ToolName";
+import { showToast } from "../components/Toast";
 
 interface ActionResult {
     uuids: string[];
@@ -30,23 +29,15 @@ const meta = () =>
 
 const UuidGenerator = (): ReactNode => {
     const fetcher = useFetcher<ActionResult>();
-    const [toastVisible, setToastVisible] = useState(false);
 
     const handleCopy = (uuid: string): void => {
         void navigator.clipboard.writeText(uuid);
-        setToastVisible(true);
+        showToast("コピーしました", "info");
     };
 
     return (
         <>
             <ToolName>UUIDジェネレーター</ToolName>
-            <Toast
-                open={toastVisible}
-                onOpenChange={setToastVisible}
-                message="コピーしました"
-                icon={Check}
-                type="info"
-            />
             <fetcher.Form method="post">
                 <FilledButton>生成</FilledButton>
             </fetcher.Form>
