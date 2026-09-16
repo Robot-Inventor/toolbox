@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import type { ChangeEventHandler, ReactNode } from "react";
 import { type MetaDescriptor, useFetcher } from "react-router";
 import type { Route } from "./+types/CharacterCounter";

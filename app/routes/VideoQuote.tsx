@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { type MetaDescriptor, useFetcher } from "react-router";
 import { type ReactNode, useState } from "react";
 import { CircleAlert } from "lucide-react";
@@ -7,7 +6,7 @@ import type { Route } from "./+types/VideoQuote";
 import { TextField } from "../components/TextField";
 import { Toast } from "../components/Toast";
 import { ToolName } from "../components/ToolName";
-import { css } from "@emotion/react";
+import { textFieldStyles } from "./VideoQuote.css";
 import { validateXStatusUrl } from "../utils/xUrl";
 
 interface SuccessActionResult {
@@ -54,10 +53,6 @@ const meta = () =>
         }
     ] as const satisfies MetaDescriptor[];
 
-const textFieldStyles = css({
-    marginBottom: "1rem"
-});
-
 const VideoQuote = (): ReactNode => {
     const [toastVisible, setToastVisible] = useState(false);
     const fetcher = useFetcher<ActionResult>();
@@ -74,7 +69,12 @@ const VideoQuote = (): ReactNode => {
         <>
             <ToolName>動画のみ引用ポスト</ToolName>
             <fetcher.Form method="post">
-                <TextField type="url" placeholder="引用したいポストのURLを入力" css={textFieldStyles} name="url" />
+                <TextField
+                    type="url"
+                    placeholder="引用したいポストのURLを入力"
+                    className={textFieldStyles}
+                    name="url"
+                />
                 <FilledButton>ポストする</FilledButton>
             </fetcher.Form>
             {fetcher.data && !fetcher.data.success && (

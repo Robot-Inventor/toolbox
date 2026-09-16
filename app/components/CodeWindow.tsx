@@ -1,8 +1,16 @@
-/** @jsxImportSource @emotion/react */
 import { EditProvider, File } from "@pierre/diffs/react";
 import { Editor, type EditorFactory } from "@pierre/diffs/edit";
 import type { ReactNode, RefObject } from "react";
-import { css } from "@emotion/react";
+import {
+    canvasStyles,
+    editorContainerStyles,
+    titleBarStyles,
+    titleInputStyles,
+    titleStyles,
+    trafficLightStyles,
+    windowStyles
+} from "./CodeWindow.css";
+import { mergeClassNames } from "../utils/mergeClassNames";
 
 interface CodeWindowProps {
     canvasRef: RefObject<HTMLDivElement | null>;
@@ -16,52 +24,6 @@ interface CodeWindowProps {
 const createEditor: EditorFactory<undefined, undefined> = (editorType, options, editStateKey) =>
     new Editor(editorType, options, editStateKey);
 
-const canvasStyles = css({
-    background: "#9bb4c4",
-    padding: "3rem",
-    width: "min(56rem, 100%)"
-});
-
-const windowStyles = css({
-    background: "#1e1e2e",
-    borderRadius: "0.75rem",
-    boxShadow: "0 1.5rem 4rem rgba(0, 0, 0, 0.45)",
-    overflow: "hidden",
-    width: "min(56rem, 100%)"
-});
-
-const titleBarStyles = css({
-    alignItems: "center",
-    background: "#181825",
-    display: "flex",
-    gap: "0.5rem",
-    padding: "0.7rem 1rem"
-});
-
-const trafficLightBase = css({
-    borderRadius: "50%",
-    height: "0.75rem",
-    width: "0.75rem"
-});
-
-const titleStyles = css({
-    color: "#a6adc8",
-    flex: 1,
-    textAlign: "center"
-});
-
-const titleInputStyles = css({
-    ":focus": {
-        outline: "0.1rem solid #a6adc8"
-    },
-
-    textAlign: "center"
-});
-
-const editorContainerStyles = css({
-    minHeight: "10rem"
-});
-
 const CodeWindow = ({
     canvasRef,
     file,
@@ -70,15 +32,15 @@ const CodeWindow = ({
     onFileNameBlur,
     onFileNameChange
 }: CodeWindowProps): ReactNode => (
-    <div css={canvasStyles} ref={canvasRef}>
-        <div css={windowStyles}>
-            <div css={titleBarStyles}>
-                <span css={[trafficLightBase, { background: "#ff5f57" }]} />
-                <span css={[trafficLightBase, { background: "#febc2e" }]} />
-                <span css={[trafficLightBase, { background: "#28c840" }]} />
+    <div className={canvasStyles} ref={canvasRef}>
+        <div className={windowStyles}>
+            <div className={titleBarStyles}>
+                <span className={trafficLightStyles.red} />
+                <span className={trafficLightStyles.yellow} />
+                <span className={trafficLightStyles.green} />
                 <input
                     aria-label="ファイル名"
-                    css={[titleStyles, titleInputStyles]}
+                    className={mergeClassNames(titleStyles, titleInputStyles)}
                     type="text"
                     value={fileName}
                     onChange={(event) => {
@@ -87,7 +49,7 @@ const CodeWindow = ({
                     onBlur={onFileNameBlur}
                 />
             </div>
-            <div css={editorContainerStyles}>
+            <div className={editorContainerStyles}>
                 <EditProvider createEditor={createEditor}>
                     <File
                         key={file.lang}

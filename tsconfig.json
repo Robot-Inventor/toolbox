@@ -1,5 +1,5 @@
 {
-    "extends": "@robot-inventor/tsconfig-base/react-emotion.json",
+    "extends": "@robot-inventor/tsconfig-base/react.json",
     "compilerOptions": {
         "rootDir": null,
         "rootDirs": [".", "./.react-router/types"],

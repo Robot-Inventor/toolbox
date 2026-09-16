@@ -1,17 +1,10 @@
 import type { ReactNode } from "react";
-import { css } from "@emotion/react";
+import { toolNameStyles } from "./ToolName.css";
 
 interface ToolNameProps {
     children: string;
 }
 
-const toolNameStyles = css({
-    color: "var(--color-on-surface)",
-    fontSize: "1.5em",
-    fontWeight: 700,
-    marginBottom: "1rem"
-});
-
-const ToolName = ({ children }: ToolNameProps): ReactNode => <h2 css={toolNameStyles}>{children}</h2>;
+const ToolName = ({ children }: ToolNameProps): ReactNode => <h2 className={toolNameStyles}>{children}</h2>;
 
 export { ToolName };

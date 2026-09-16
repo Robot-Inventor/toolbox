@@ -1,10 +1,9 @@
-/** @jsxImportSource @emotion/react */
 import { type ReactNode, useRef, useState } from "react";
+import { buttonContainerStyles, hiddenCanvasStyles, previewImageStyles } from "./ExifRemover.css";
 import { ExifDropZone } from "../components/ExifDropZone";
 import { FilledButton } from "../components/FilledButton";
 import type { MetaDescriptor } from "react-router";
 import { ToolName } from "../components/ToolName";
-import { css } from "@emotion/react";
 
 const meta = () =>
     [
@@ -16,24 +15,6 @@ const meta = () =>
             name: "description"
         }
     ] as const satisfies MetaDescriptor[];
-
-const previewImageStyles = css({
-    borderRadius: "0.5rem",
-    maxHeight: "20rem",
-    maxWidth: "100%",
-    objectFit: "contain"
-});
-
-const buttonContainerStyles = css({
-    display: "flex",
-    gap: "0.75rem",
-    justifyContent: "center",
-    marginTop: "1rem"
-});
-
-const hiddenCanvasStyles = css({
-    display: "none"
-});
 
 const DEFAULT_QUALITY = 0.95;
 const CANVAS_ORIGIN_X = 0;
@@ -152,13 +133,13 @@ const ExifRemover = (): ReactNode => {
             />
             {state.previewUrl && (
                 <>
-                    <img src={state.previewUrl} alt="Preview" css={previewImageStyles} />
-                    <div css={buttonContainerStyles}>
+                    <img src={state.previewUrl} alt="Preview" className={previewImageStyles} />
+                    <div className={buttonContainerStyles}>
                         {state.processedUrl && <FilledButton onClick={handleDownload}>ダウンロード</FilledButton>}
                     </div>
                 </>
             )}
-            <canvas ref={canvasRef} css={hiddenCanvasStyles} />
+            <canvas ref={canvasRef} className={hiddenCanvasStyles} />
         </>
     );
 };

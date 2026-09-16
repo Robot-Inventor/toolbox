@@ -1,12 +1,11 @@
-/** @jsxImportSource @emotion/react */
 import { type MetaDescriptor, useFetcher } from "react-router";
 import { type ReactNode, useState } from "react";
+import { itemStyles, liStyles, ulStyles } from "./UuidGenerator.css";
 import { Check } from "lucide-react";
 import { FilledButton } from "../components/FilledButton";
 import { TextButton } from "../components/TextButton";
 import { Toast } from "../components/Toast";
 import { ToolName } from "../components/ToolName";
-import { css } from "@emotion/react";
 
 interface ActionResult {
     uuids: string[];
@@ -28,22 +27,6 @@ const meta = () =>
             name: "description"
         }
     ] as const satisfies MetaDescriptor[];
-
-const ulStyles = css({
-    marginTop: "1rem",
-    width: "fit-content"
-});
-
-const liStyles = css({
-    display: "grid",
-    gridTemplateColumns: "1fr auto",
-    justifyContent: "space-between"
-});
-
-const itemStyles = css({
-    marginRight: "1rem",
-    userSelect: "all"
-});
 
 const UuidGenerator = (): ReactNode => {
     const fetcher = useFetcher<ActionResult>();
@@ -68,10 +51,10 @@ const UuidGenerator = (): ReactNode => {
                 <FilledButton>生成</FilledButton>
             </fetcher.Form>
             {fetcher.data && (
-                <ul css={ulStyles}>
+                <ul className={ulStyles}>
                     {fetcher.data.uuids.map((uuid) => (
-                        <li key={uuid} css={liStyles}>
-                            <span css={itemStyles}>{uuid}</span>
+                        <li key={uuid} className={liStyles}>
+                            <span className={itemStyles}>{uuid}</span>
                             <TextButton
                                 onClick={() => {
                                     handleCopy(uuid);

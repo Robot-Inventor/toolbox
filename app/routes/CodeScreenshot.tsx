@@ -1,16 +1,15 @@
-/** @jsxImportSource @emotion/react */
 import { AUTO_LANGUAGE_VALUE, LANGUAGE_OPTIONS, detectLanguage, toExtension } from "../utils/languageDetection";
 import { Check, CircleAlert } from "lucide-react";
 import { type ReactNode, type RefObject, useEffect, useMemo, useRef, useState } from "react";
+import { buttonRowStyles, fieldLabelStyles, pageStyles, selectStyles } from "./CodeScreenshot.css";
 import { domToBlob, domToPng } from "modern-screenshot";
 import { CodeWindow } from "../components/CodeWindow";
 import { FilledButton } from "../components/FilledButton";
 import type { MetaDescriptor } from "react-router";
 import { TextButton } from "../components/TextButton";
 import { Toast } from "../components/Toast";
-import { ToolName } from "../components/ToolName";
 // oxlint-disable-next-line import/max-dependencies
-import { css } from "@emotion/react";
+import { ToolName } from "../components/ToolName";
 
 const INITIAL_CODE = `function greet(name) {
   return \`Hello, \${name}!\`;
@@ -49,41 +48,6 @@ const meta = () =>
             name: "description"
         }
     ] as const satisfies MetaDescriptor[];
-
-const pageStyles = css({
-    display: "grid",
-    gap: "1.25rem",
-    left: "50%",
-    position: "relative",
-    transform: "translateX(-50%)",
-    width: "min(96rem, calc(100vw - 2rem))"
-});
-
-const fieldLabelStyles = css({
-    display: "grid",
-    gap: "0.5rem"
-});
-
-const selectStyles = css({
-    ":focus": {
-        borderColor: "var(--color-outline)",
-        outline: "none"
-    },
-
-    background: "var(--color-surface-container)",
-    border: "0.1rem solid var(--color-outline-variant)",
-    borderRadius: "0.5rem",
-    color: "var(--color-on-surface)",
-    padding: "0.6rem 0.75rem",
-    width: "fit-content"
-});
-
-const buttonRowStyles = css({
-    alignItems: "center",
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "0.75rem"
-});
 
 const screenshotCleanupStyles = `
 [data-caret], [data-caret-highlight-range], [data-selection-range] {
@@ -229,7 +193,7 @@ const ExportButtons = ({ canvasRef }: ExportButtonsProps): ReactNode => {
 
     return (
         <>
-            <div css={buttonRowStyles}>
+            <div className={buttonRowStyles}>
                 <FilledButton onClick={download}>PNGをダウンロード</FilledButton>
                 <TextButton
                     onClick={() => {
@@ -261,12 +225,12 @@ const CodeScreenshot = (): ReactNode => {
     const file = useMemo(() => buildFile(code, detected, languageOverride), [code, detected, languageOverride]);
 
     return (
-        <div css={pageStyles}>
+        <div className={pageStyles}>
             <ToolName>コードスクリーンショット</ToolName>
-            <label css={fieldLabelStyles}>
+            <label className={fieldLabelStyles}>
                 言語
                 <select
-                    css={selectStyles}
+                    className={selectStyles}
                     value={languageOverride}
                     onChange={(event) => {
                         setLanguageOverride(event.currentTarget.value);
