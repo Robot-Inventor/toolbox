@@ -1,5 +1,4 @@
 import { AUTO_LANGUAGE_VALUE, LANGUAGE_OPTIONS, detectLanguage, toExtension } from "../utils/languageDetection";
-import { Check, CircleAlert } from "lucide-react";
 import { type ReactNode, type RefObject, useEffect, useMemo, useRef, useState } from "react";
 import { buttonRowStyles, fieldLabelStyles, pageStyles, selectStyles } from "./CodeScreenshot.css";
 import { domToBlob, domToPng } from "modern-screenshot";
@@ -7,9 +6,8 @@ import { CodeWindow } from "../components/CodeWindow";
 import { FilledButton } from "../components/FilledButton";
 import type { MetaDescriptor } from "react-router";
 import { TextButton } from "../components/TextButton";
-import { Toast } from "../components/Toast";
-// oxlint-disable-next-line import/max-dependencies
 import { ToolName } from "../components/ToolName";
+import { showToast } from "../components/Toast";
 
 const INITIAL_CODE = `function greet(name) {
   return \`Hello, \${name}!\`;
@@ -132,88 +130,54 @@ const savePng = async (canvas: HTMLDivElement): Promise<void> => {
     link.click();
 };
 
-interface ImageExport {
-    copy: () => Promise<void>;
-    download: () => void;
-    onToastOpenChange: (open: boolean) => void;
-    status: string;
-    toastKey: boolean;
-    toastType: "info" | "error";
-    toastVisible: boolean;
-}
+const downloadImage = (canvasRef: RefObject<HTMLDivElement | null>): void => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    savePng(canvas).catch(() => {
+        showToast("画像の生成に失敗しました", "error");
+    });
+};
 
-const useImageExport = (canvasRef: RefObject<HTMLDivElement | null>): ImageExport => {
-    const [status, setStatus] = useState("");
-    const [toastKey, setToastKey] = useState(false);
-    const [toastType, setToastType] = useState<"info" | "error">("info");
-    const [toastVisible, setToastVisible] = useState(false);
-
-    const showStatus = (message: string, type: "info" | "error"): void => {
-        setStatus(message);
-        setToastKey((current) => !current);
-        setToastType(type);
-        setToastVisible(true);
-    };
-
-    const download = (): void => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        savePng(canvas).catch(() => {
-            showStatus("画像の生成に失敗しました", "error");
-        });
-    };
-
-    const copy = async (): Promise<void> => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const blob = await captureWithoutEditorArtifacts(canvas, () =>
-            domToBlob(canvas, { scale: EXPORT_SCALE })
-        ).catch(() => null);
-        if (!blob) {
-            showStatus("画像の生成に失敗しました", "error");
-            return;
-        }
-        try {
-            await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
-            showStatus("コピーしました", "info");
-        } catch {
-            showStatus("画像のコピーに対応していない環境です", "error");
-        }
-    };
-
-    return { copy, download, onToastOpenChange: setToastVisible, status, toastKey, toastType, toastVisible };
+const copyImage = async (canvasRef: RefObject<HTMLDivElement | null>): Promise<void> => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const blob = await captureWithoutEditorArtifacts(canvas, () => domToBlob(canvas, { scale: EXPORT_SCALE })).catch(
+        () => null
+    );
+    if (!blob) {
+        showToast("画像の生成に失敗しました", "error");
+        return;
+    }
+    try {
+        await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+        showToast("コピーしました", "info");
+    } catch {
+        showToast("画像のコピーに対応していない環境です", "error");
+    }
 };
 
 interface ExportButtonsProps {
     canvasRef: RefObject<HTMLDivElement | null>;
 }
 
-const ExportButtons = ({ canvasRef }: ExportButtonsProps): ReactNode => {
-    const { copy, download, onToastOpenChange, status, toastKey, toastType, toastVisible } = useImageExport(canvasRef);
-
-    return (
-        <>
-            <div className={buttonRowStyles}>
-                <FilledButton onClick={download}>PNGをダウンロード</FilledButton>
-                <TextButton
-                    onClick={() => {
-                        void copy();
-                    }}
-                >
-                    画像をコピー
-                </TextButton>
-            </div>
-            <Toast
-                key={String(toastKey)}
-                open={toastVisible}
-                onOpenChange={onToastOpenChange}
-                message={status}
-                icon={toastType === "info" ? Check : CircleAlert}
-                type={toastType}
-            />
-        </>
-    );
-};
+const ExportButtons = ({ canvasRef }: ExportButtonsProps): ReactNode => (
+    <div className={buttonRowStyles}>
+        <FilledButton
+            onClick={() => {
+                downloadImage(canvasRef);
+            }}
+        >
+            PNGをダウンロード
+        </FilledButton>
+        <TextButton
+            onClick={() => {
+                void copyImage(canvasRef);
+            }}
+        >
+            画像をコピー
+        </TextButton>
+    </div>
+);
 
 const CodeScreenshot = (): ReactNode => {
     const [code, setCode] = useState(INITIAL_CODE);

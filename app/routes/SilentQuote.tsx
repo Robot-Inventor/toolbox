@@ -1,12 +1,11 @@
 import { type MetaDescriptor, useFetcher } from "react-router";
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useEffect } from "react";
 import { toXWebStatusPath, validateXStatusUrl } from "../utils/xUrl";
-import { CircleAlert } from "lucide-react";
 import { FilledButton } from "../components/FilledButton";
 import type { Route } from "./+types/SilentQuote";
 import { TextField } from "../components/TextField";
-import { Toast } from "../components/Toast";
 import { ToolName } from "../components/ToolName";
+import { showToast } from "../components/Toast";
 import { textFieldStyles } from "./SilentQuote.css";
 
 interface SuccessActionResult {
@@ -49,16 +48,13 @@ const meta = () =>
     ] as const satisfies MetaDescriptor[];
 
 const SilentQuote = (): ReactNode => {
-    const [toastVisible, setToastVisible] = useState(false);
     const fetcher = useFetcher<ActionResult>();
-    const [prevFetcherData, setPrevFetcherData] = useState(fetcher.data);
 
-    if (fetcher.data !== prevFetcherData) {
-        setPrevFetcherData(fetcher.data);
+    useEffect(() => {
         if (fetcher.data && !fetcher.data.success) {
-            setToastVisible(true);
+            showToast(fetcher.data.error, "error");
         }
-    }
+    }, [fetcher.data]);
 
     return (
         <>
@@ -72,15 +68,6 @@ const SilentQuote = (): ReactNode => {
                 />
                 <FilledButton>ポストする</FilledButton>
             </fetcher.Form>
-            {fetcher.data && !fetcher.data.success && (
-                <Toast
-                    open={toastVisible}
-                    onOpenChange={setToastVisible}
-                    message={fetcher.data.error}
-                    icon={CircleAlert}
-                    type="error"
-                />
-            )}
         </>
     );
 };
