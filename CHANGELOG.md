@@ -1,5 +1,19 @@
 # toolbox
 
+## 1.0.0
+
+### Major Changes
+
+- [#487](https://github.com/Robot-Inventor/toolbox/pull/487) [`86107d6`](https://github.com/Robot-Inventor/toolbox/commit/86107d64a9e8f76b9c079062d96bac078e81e6ce) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: Radix UIからBase UIに移行
+
+### Minor Changes
+
+- [#486](https://github.com/Robot-Inventor/toolbox/pull/486) [`d54d264`](https://github.com/Robot-Inventor/toolbox/commit/d54d2649d6671b639e2c52c7ee88654b7841e49d) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: Vanilla Extractに移行
+
+- [#484](https://github.com/Robot-Inventor/toolbox/pull/484) [`377de71`](https://github.com/Robot-Inventor/toolbox/commit/377de7159dc05068faf716bd710918b61bf27878) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: コードスクリーンショットツールを追加
+
+- [#487](https://github.com/Robot-Inventor/toolbox/pull/487) [`86107d6`](https://github.com/Robot-Inventor/toolbox/commit/86107d64a9e8f76b9c079062d96bac078e81e6ce) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - feat: ToastをRadix UIからBase UIに移行
+
 ## 0.8.1
 
 ### Patch Changes
