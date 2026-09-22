@@ -32,7 +32,6 @@ const toHex = (buffer: ArrayBuffer): string =>
         .map((value) => value.toString(16).padStart(2, "0"))
         .join("");
 
-// oxlint-disable-next-line max-lines-per-function
 const QrCodeGenerator = (): ReactNode => {
     const [text, setText] = useState("");
     const hashSuffixRef = useRef("00000000");
