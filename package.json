@@ -43,7 +43,7 @@
     "@vanilla-extract/vite-plugin": "^5.2.6",
     "@vitejs/plugin-react": "6.1.1",
     "knip": "^6.0.0",
-    "oxc-transform-react": "^0.150.0",
+    "oxc-transform-react": "^0.151.0",
     "oxlint": "^1.83.0",
     "prettier": "^3.5.1",
     "typescript": "^7.0.0",
