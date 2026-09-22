@@ -1,5 +1,11 @@
 # toolbox
 
+## 1.0.1
+
+### Patch Changes
+
+- [#490](https://github.com/Robot-Inventor/toolbox/pull/490) [`9de6780`](https://github.com/Robot-Inventor/toolbox/commit/9de6780ed1aeb711d9cb8646b884447f586e2f66) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - chore: remove unused oxlint-disable comments
+
 ## 1.0.0
 
 ### Major Changes
