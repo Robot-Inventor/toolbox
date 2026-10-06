@@ -19,6 +19,23 @@ const INITIAL_LANGUAGE = "text";
 const DETECTION_DEBOUNCE_MS = 500;
 const EXPORT_SCALE = 2;
 
+// modern-screenshot computes default styles in a sandbox iframe before its
+// srcdoc document finishes loading. In Firefox that initial about:blank
+// document reports `pre { margin-top: 0 }`, so the diff pass omits the
+// `margin: 0` from the editor's shadow stylesheet and the exported image
+// falls back to the UA default `pre { margin: 1em 0 }`, shifting all lines
+// down and clipping the last one. Re-apply the margin on the cloned tree
+// before serialization.
+const EXPORT_OPTIONS = {
+    onCloneNode: (clone: Node): void => {
+        if (!(clone instanceof Element)) return;
+        for (const element of clone.querySelectorAll<HTMLElement>("pre, code")) {
+            element.style.margin = "0";
+        }
+    },
+    scale: EXPORT_SCALE
+};
+
 interface SnapshotFile {
     contents: string;
     lang: string;
@@ -123,7 +140,7 @@ const useDetectedLanguage = (code: string): string => {
 };
 
 const savePng = async (canvas: HTMLDivElement): Promise<void> => {
-    const dataUrl = await captureWithoutEditorArtifacts(canvas, () => domToPng(canvas, { scale: EXPORT_SCALE }));
+    const dataUrl = await captureWithoutEditorArtifacts(canvas, () => domToPng(canvas, EXPORT_OPTIONS));
     const link = document.createElement("a");
     link.download = "code-screenshot.png";
     link.href = dataUrl;
@@ -141,9 +158,7 @@ const downloadImage = (canvasRef: RefObject<HTMLDivElement | null>): void => {
 const copyImage = async (canvasRef: RefObject<HTMLDivElement | null>): Promise<void> => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const blob = await captureWithoutEditorArtifacts(canvas, () => domToBlob(canvas, { scale: EXPORT_SCALE })).catch(
-        () => null
-    );
+    const blob = await captureWithoutEditorArtifacts(canvas, () => domToBlob(canvas, EXPORT_OPTIONS)).catch(() => null);
     if (!blob) {
         showToast("画像の生成に失敗しました", "error");
         return;
