@@ -1,5 +1,11 @@
 # toolbox
 
+## 1.0.2
+
+### Patch Changes
+
+- [#497](https://github.com/Robot-Inventor/toolbox/pull/497) [`8841c92`](https://github.com/Robot-Inventor/toolbox/commit/8841c928277391525bbbafff8890264fcd43e723) Thanks [@Robot-Inventor](https://github.com/Robot-Inventor)! - fix: Firefoxでスクリーンショットを撮影する場合にレイアウトがずれる問題を修正
+
 ## 1.0.1
 
 ### Patch Changes
