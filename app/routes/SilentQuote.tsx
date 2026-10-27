@@ -33,7 +33,11 @@ const clientAction = async ({ request }: Route.ClientActionArgs): Promise<Action
     const composerUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(convertedUrl)}`;
     open(composerUrl);
 
-    return { composerUrl, convertedUrl, success: true };
+    return {
+        composerUrl,
+        convertedUrl,
+        success: true
+    };
 };
 
 const meta = () =>
@@ -73,4 +77,5 @@ const SilentQuote = (): ReactNode => {
 };
 
 export default SilentQuote;
+// oxlint-disable-next-line react-doctor/only-export-components
 export { clientAction, meta };

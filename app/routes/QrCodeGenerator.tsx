@@ -105,4 +105,5 @@ const QrCodeGenerator = (): ReactNode => {
 };
 
 export default QrCodeGenerator;
+// oxlint-disable-next-line react-doctor/only-export-components
 export { meta };

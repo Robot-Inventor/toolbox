@@ -18,7 +18,10 @@ const clientAction = async ({ request }: Route.ClientActionArgs): Promise<Action
 
     const lengthAll = [...segmenter.segment(text)].length;
     const lengthWithoutNewlines = [...segmenter.segment(text.replace(/[\r\n]/gu, ""))].length;
-    return { lengthAll, lengthWithoutNewlines };
+    return {
+        lengthAll,
+        lengthWithoutNewlines
+    };
 };
 
 const meta = () =>
@@ -59,4 +62,5 @@ const CharacterCounter = (): ReactNode => {
 };
 
 export default CharacterCounter;
+// oxlint-disable-next-line react-doctor/only-export-components
 export { clientAction, meta };

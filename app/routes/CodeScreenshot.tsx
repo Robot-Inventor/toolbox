@@ -34,7 +34,7 @@ const EXPORT_OPTIONS = {
         }
     },
     scale: EXPORT_SCALE
-};
+} as const;
 
 interface SnapshotFile {
     contents: string;
@@ -126,7 +126,9 @@ const useDetectedLanguage = (code: string): string => {
         let cancelled = false;
         const timer = window.setTimeout(() => {
             void detectLanguage(code).then((language) => {
-                if (!cancelled) setDetected(language ?? INITIAL_LANGUAGE);
+                if (!cancelled) {
+                    setDetected(language ?? INITIAL_LANGUAGE);
+                }
             });
         }, DETECTION_DEBOUNCE_MS);
 
@@ -239,4 +241,5 @@ const CodeScreenshot = (): ReactNode => {
 };
 
 export default CodeScreenshot;
+// oxlint-disable-next-line react-doctor/only-export-components
 export { meta };

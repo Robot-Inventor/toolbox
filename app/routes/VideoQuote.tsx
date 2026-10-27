@@ -37,7 +37,11 @@ const clientAction = async ({ request }: Route.ClientActionArgs): Promise<Action
     const composerUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(convertedUrl)}`;
     open(composerUrl);
 
-    return { composerUrl, convertedUrl, success: true };
+    return {
+        composerUrl,
+        convertedUrl,
+        success: true
+    };
 };
 
 const meta = () =>
@@ -77,4 +81,5 @@ const VideoQuote = (): ReactNode => {
 };
 
 export default VideoQuote;
+// oxlint-disable-next-line react-doctor/only-export-components
 export { clientAction, meta };

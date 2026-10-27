@@ -22,13 +22,22 @@ const validateXStatusUrl = (input: string): XUrlValidationResult => {
     if (!parsedUrl) return { error: "有効なURLを入力してください。", ok: false };
 
     if (!X_HOSTS.has(parsedUrl.hostname)) {
-        return { error: "XのURLを入力してください。", ok: false };
+        return {
+            error: "XのURLを入力してください。",
+            ok: false
+        };
     }
     if (!/\/[^/]+\/status\//u.exec(parsedUrl.pathname)) {
-        return { error: "ポストのURLを入力してください。", ok: false };
+        return {
+            error: "ポストのURLを入力してください。",
+            ok: false
+        };
     }
 
-    return { ok: true, url: parsedUrl };
+    return {
+        ok: true,
+        url: parsedUrl
+    };
 };
 
 /**

@@ -95,7 +95,12 @@ const ExifRemover = (): ReactNode => {
         });
 
         const objectUrl = URL.createObjectURL(file);
-        setState({ isDragging: false, originalFile: file, previewUrl: objectUrl, processedUrl: null });
+        setState({
+            isDragging: false,
+            originalFile: file,
+            previewUrl: objectUrl,
+            processedUrl: null
+        });
     };
 
     const handleFileSelect = (files: FileList | null): void => {
@@ -144,4 +149,5 @@ const ExifRemover = (): ReactNode => {
 };
 
 export default ExifRemover;
+// oxlint-disable-next-line react-doctor/only-export-components
 export { meta };
