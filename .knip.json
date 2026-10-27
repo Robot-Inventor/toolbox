@@ -1,8 +1,4 @@
 {
     "project": ["app/**/*.(ts|tsx)"],
-    "ignoreDependencies": [
-        "eslint-plugin-import-x",
-        "eslint-plugin-jsdoc",
-        "oxlint-plugin-react-doctor"
-    ]
+    "ignoreDependencies": ["eslint-plugin-import-x", "eslint-plugin-jsdoc", "oxlint-plugin-react-doctor"]
 }
