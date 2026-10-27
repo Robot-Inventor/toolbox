@@ -62,4 +62,5 @@ const UuidGenerator = (): ReactNode => {
 };
 
 export default UuidGenerator;
+// oxlint-disable-next-line react-doctor/only-export-components
 export { clientAction, meta };

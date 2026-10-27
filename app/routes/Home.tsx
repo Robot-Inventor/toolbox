@@ -26,4 +26,5 @@ const Home = (): ReactNode => (
 );
 
 export default Home;
+// oxlint-disable-next-line react-doctor/only-export-components
 export { meta };

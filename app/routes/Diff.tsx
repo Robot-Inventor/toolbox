@@ -54,11 +54,31 @@ const EMPTY_STATE_MESSAGE = "左右の入力欄にテキストを入れると差
 const NO_DIFF_MESSAGE = "差分はありません。";
 
 const LANGUAGE_OPTIONS = [
-    { extension: "md", label: "Markdown", value: "markdown" },
-    { extension: "ts", label: "TypeScript", value: "typescript" },
-    { extension: "html", label: "HTML", value: "html" },
-    { extension: "css", label: "CSS", value: "css" },
-    { extension: "json", label: "JSON", value: "json" }
+    {
+        extension: "md",
+        label: "Markdown",
+        value: "markdown"
+    },
+    {
+        extension: "ts",
+        label: "TypeScript",
+        value: "typescript"
+    },
+    {
+        extension: "html",
+        label: "HTML",
+        value: "html"
+    },
+    {
+        extension: "css",
+        label: "CSS",
+        value: "css"
+    },
+    {
+        extension: "json",
+        label: "JSON",
+        value: "json"
+    }
 ] as const satisfies readonly LanguageOption[];
 
 const meta = () =>
@@ -127,7 +147,14 @@ const useTextDiffInputs = (): TextDiffInputs => {
         setAfterText(event.currentTarget.value);
     };
 
-    return { afterText, beforeText, language, onAfterTextChange, onBeforeTextChange, onLanguageChange };
+    return {
+        afterText,
+        beforeText,
+        language,
+        onAfterTextChange,
+        onBeforeTextChange,
+        onLanguageChange
+    };
 };
 
 const useDiffPreview = (inputs: Pick<TextDiffInputs, "afterText" | "beforeText" | "language">): DiffPreviewModel => {
@@ -140,7 +167,12 @@ const useDiffPreview = (inputs: Pick<TextDiffInputs, "afterText" | "beforeText" 
     const fileDiff = createFileDiff(normalizedBeforeText, normalizedAfterText, selectedLanguage);
     const isDiffEmpty = beforeText.length === EMPTY_TEXT_LENGTH && afterText.length === EMPTY_TEXT_LENGTH;
 
-    return { diffLayout, fileDiff, hasNoDiff, isDiffEmpty };
+    return {
+        diffLayout,
+        fileDiff,
+        hasNoDiff,
+        isDiffEmpty
+    };
 };
 
 const LanguageSelector = ({
@@ -235,4 +267,5 @@ const Diff = (): ReactNode => {
 };
 
 export default Diff;
+// oxlint-disable-next-line react-doctor/only-export-components
 export { meta };

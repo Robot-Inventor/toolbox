@@ -52,4 +52,5 @@ const Toast = (): ReactNode => (
     </BaseToast.Provider>
 );
 
+// oxlint-disable-next-line react-doctor/only-export-components
 export { Toast, showToast };
