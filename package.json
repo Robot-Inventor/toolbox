@@ -41,7 +41,7 @@
     "@types/react-dom": "^19.0.1",
     "@vanilla-extract/css": "^1.21.2",
     "@vanilla-extract/vite-plugin": "^5.2.6",
-    "@vitejs/plugin-react": "6.1.2",
+    "@vitejs/plugin-react": "6.2.1",
     "knip": "^6.0.0",
     "oxc-transform-react": "^0.156.0",
     "oxfmt": "^0.75.0",
