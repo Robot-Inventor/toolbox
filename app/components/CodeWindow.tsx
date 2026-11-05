@@ -10,6 +10,7 @@ import {
     trafficLightStyles,
     windowStyles
 } from "./CodeWindow.css";
+// oxlint-disable-next-line roboin/logical-newline
 import { mergeClassNames } from "../utils/mergeClassNames";
 
 interface CodeWindowProps {
@@ -73,4 +74,5 @@ const CodeWindow = ({
         </div>
     </div>
 );
+
 export { CodeWindow };

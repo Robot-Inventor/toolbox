@@ -27,6 +27,7 @@ const validateXStatusUrl = (input: string): XUrlValidationResult => {
             ok: false
         };
     }
+
     if (!/\/[^/]+\/status\//u.exec(parsedUrl.pathname)) {
         return {
             error: "ポストのURLを入力してください。",

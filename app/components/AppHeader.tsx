@@ -19,6 +19,7 @@ const AppHeader = (): ReactNode => {
     const sidebarRef = useRef<HTMLDivElement>(null);
     const closeSidebar = (): void => {
         if (!sidebarRef.current) throw new Error("Sidebar not found");
+
         sidebarRef.current.hidePopover();
     };
 

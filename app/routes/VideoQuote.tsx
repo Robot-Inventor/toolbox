@@ -33,6 +33,7 @@ const clientAction = async ({ request }: Route.ClientActionArgs): Promise<Action
     const normalizedStatusPath = statusPath.endsWith("/video/1")
         ? statusPath
         : `${statusPath.replace(/\/+$/u, "")}/video/1`;
+
     const convertedUrl = new URL(normalizedStatusPath, "https://x.com").toString();
     const composerUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(convertedUrl)}`;
     open(composerUrl);
