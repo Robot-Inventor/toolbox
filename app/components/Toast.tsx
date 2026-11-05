@@ -29,6 +29,7 @@ const ToastList = (): ReactNode => {
 
     return toasts.map((toast) => {
         const type = toast.type === "error" ? "error" : "info";
+
         return (
             <BaseToast.Root className={rootStyles} key={toast.id} swipeDirection="up" toast={toast}>
                 <div className={titleWrapperStyles}>

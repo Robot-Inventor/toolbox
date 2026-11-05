@@ -10,6 +10,7 @@ import {
     sectionStyles,
     selectStyles
 } from "./Diff.css";
+// oxlint-disable-next-line roboin/logical-newline
 import { FileDiff } from "@pierre/diffs/react";
 import type { MetaDescriptor } from "react-router";
 import { TextAreaField } from "../components/TextAreaField";
@@ -95,6 +96,7 @@ const meta = () =>
 const subscribeToOrientation = (onStoreChange: () => void): (() => void) => {
     const mediaQueryList = window.matchMedia(PORTRAIT_MEDIA_QUERY);
     mediaQueryList.addEventListener("change", onStoreChange);
+
     return () => {
         mediaQueryList.removeEventListener("change", onStoreChange);
     };
@@ -102,6 +104,7 @@ const subscribeToOrientation = (onStoreChange: () => void): (() => void) => {
 
 const getDiffLayoutSnapshot = (): DiffLayout => {
     if (typeof window === "undefined") return DEFAULT_DIFF_LAYOUT;
+
     return window.matchMedia(PORTRAIT_MEDIA_QUERY).matches ? "unified" : DEFAULT_DIFF_LAYOUT;
 };
 
@@ -110,6 +113,7 @@ const useResponsiveDiffLayout = (): DiffLayout =>
 
 const normalizeTextForDiff = (text: string): string => {
     if (text.length === EMPTY_TEXT_LENGTH || LINE_BREAK_REGEX.test(text)) return text;
+
     return `${text}${text.includes("\r\n") ? "\r\n" : "\n"}`;
 };
 

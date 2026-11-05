@@ -177,9 +177,11 @@ const EXTENSION_MAP: Record<string, string> = {
 
 const toShikiLanguage = (languageId: string): string => {
     if (languageId === "r") return "r";
+
     const mapped = LANGUAGE_ID_MAP[languageId];
     if (mapped) return mapped;
     if (KNOWN_LANGUAGE_IDS.has(languageId)) return languageId;
+
     return UNKNOWN_LANGUAGE;
 };
 
@@ -188,12 +190,14 @@ const toExtension = (lang: string): string => EXTENSION_MAP[lang] ?? lang;
 const loadModelJson = async (): Promise<Record<string, unknown>> => {
     const response = await fetch(modelJsonUrl);
     if (!response.ok) throw new Error("モデルの読み込みに失敗しました");
+
     return response.json() as Promise<Record<string, unknown>>;
 };
 
 const loadWeights = async (): Promise<ArrayBuffer> => {
     const response = await fetch(weightsUrl);
     if (!response.ok) throw new Error("モデルの読み込みに失敗しました");
+
     return response.arrayBuffer();
 };
 
@@ -204,13 +208,16 @@ const installBrowserRequireShim = (): (() => void) => {
     const previousRequire = Object.getOwnPropertyDescriptor(globalThis, "require");
     const browserRequireShim = (moduleId: string): unknown => {
         if (moduleId === "./979.js") return languageDetectionBackendChunk;
+
         throw new Error(`Unsupported module: ${moduleId}`);
     };
+
     Object.defineProperty(globalThis, "require", {
         configurable: true,
         value: browserRequireShim,
         writable: true
     });
+
     return (): void => {
         if (previousRequire) {
             Object.defineProperty(globalThis, "require", previousRequire);
@@ -225,12 +232,8 @@ const loadModelOperations = (): Promise<ModelOperations> => {
         ({ ModelOperations }) =>
             new ModelOperations({ modelJsonLoaderFunc: loadModelJson, weightsLoaderFunc: loadWeights })
     );
-    return modelOperationsPromise;
-};
 
-const resetModelOperations = (operations: ModelOperations | null): void => {
-    operations?.dispose();
-    modelOperationsPromise = null;
+    return modelOperationsPromise;
 };
 
 interface ModelRunSlot {
@@ -244,6 +247,7 @@ const enqueueModelRun = (): ModelRunSlot => {
     modelRunQueue = previousRun.then(async () => {
         await currentRun;
     });
+
     return {
         finish: () => {
             resolve(null);
@@ -263,7 +267,9 @@ const runModelWithShim = async (code: string): Promise<DetectedLanguage[]> => {
             restoreRequire();
         }
     } catch (error) {
-        resetModelOperations(operations);
+        operations?.dispose();
+        modelOperationsPromise = null;
+
         throw error;
     }
 };
@@ -283,6 +289,7 @@ const detectLanguage = async (code: string): Promise<string | null> => {
 
     try {
         const [best] = await runModel(code);
+
         return best ? toShikiLanguage(best.languageId) : null;
     } catch {
         return null;

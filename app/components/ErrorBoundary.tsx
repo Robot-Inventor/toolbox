@@ -16,7 +16,7 @@ const ErrorBoundary = ({ error }: ErrorBoundaryProps): ReactNode => {
         message = error.status === NOT_FOUND_STATUS ? "404" : "Error";
         details =
             error.status === NOT_FOUND_STATUS ? "The requested page could not be found." : error.statusText || details;
-    } else if (process.env["DEV"] && error && error instanceof Error) {
+    } else if (process.env["DEV"] && error instanceof Error) {
         details = error.message;
         stack = error.stack ?? null;
     }

@@ -15,6 +15,7 @@ const INITIAL_CODE = `function greet(name) {
 
 console.log(greet("World"));
 `;
+
 const INITIAL_LANGUAGE = "text";
 const DETECTION_DEBOUNCE_MS = 500;
 const EXPORT_SCALE = 2;
@@ -29,6 +30,7 @@ const EXPORT_SCALE = 2;
 const EXPORT_OPTIONS = {
     onCloneNode: (clone: Node): void => {
         if (!(clone instanceof Element)) return;
+
         for (const element of clone.querySelectorAll<HTMLElement>("pre, code")) {
             element.style.margin = "0";
         }
@@ -46,6 +48,7 @@ const buildFile = (contents: string, detected: string, languageOverride: string)
     const lang = languageOverride === AUTO_LANGUAGE_VALUE ? detected : languageOverride;
     const defaultName =
         lang === "docker" ? "Dockerfile" : `main.${lang === INITIAL_LANGUAGE ? "txt" : toExtension(lang)}`;
+
     return {
         contents,
         lang,
@@ -90,9 +93,12 @@ const getShadowRoots = (root: Node): ShadowRoot[] => {
             shadowRoots.push(node.shadowRoot);
             visit(node.shadowRoot);
         }
+
         node.childNodes.forEach(visit);
     };
+
     visit(root);
+
     return shadowRoots;
 };
 
@@ -101,8 +107,10 @@ const hideEditorArtifacts = (canvas: HTMLDivElement): (() => void) => {
         const style = document.createElement("style");
         style.textContent = screenshotCleanupStyles;
         shadowRoot.append(style);
+
         return style;
     });
+
     return (): void => {
         styles.forEach((style) => {
             style.remove();
@@ -152,6 +160,7 @@ const savePng = async (canvas: HTMLDivElement): Promise<void> => {
 const downloadImage = (canvasRef: RefObject<HTMLDivElement | null>): void => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     savePng(canvas).catch(() => {
         showToast("画像の生成に失敗しました", "error");
     });
@@ -160,11 +169,14 @@ const downloadImage = (canvasRef: RefObject<HTMLDivElement | null>): void => {
 const copyImage = async (canvasRef: RefObject<HTMLDivElement | null>): Promise<void> => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     const blob = await captureWithoutEditorArtifacts(canvas, () => domToBlob(canvas, EXPORT_OPTIONS)).catch(() => null);
     if (!blob) {
         showToast("画像の生成に失敗しました", "error");
+
         return;
     }
+
     try {
         await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
         showToast("コピーしました", "info");

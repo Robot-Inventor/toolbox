@@ -44,6 +44,7 @@ const QrCodeGenerator = (): ReactNode => {
         const data = encoder.encode(text);
         void crypto.subtle.digest("SHA-256", data).then((digest) => {
             if (cancelled) return;
+
             // oxlint-disable-next-line no-magic-numbers
             hashSuffixRef.current = toHex(digest).slice(0, HASH_SUFFIX_LENGTH);
         });
@@ -59,6 +60,7 @@ const QrCodeGenerator = (): ReactNode => {
     const handleDownloadPng = (): void => {
         const canvas = canvasRef.current;
         if (!canvas) return;
+
         const dataUrl = canvas.toDataURL("image/png");
         const link = document.createElement("a");
         link.download = `qr-code-${hashSuffixRef.current}.png`;
@@ -69,6 +71,7 @@ const QrCodeGenerator = (): ReactNode => {
     const handleDownloadSvg = (): void => {
         const svg = svgRef.current;
         if (!svg) return;
+
         const serialized = new XMLSerializer().serializeToString(svg);
         const blob = new Blob([serialized], { type: "image/svg+xml;charset=utf-8" });
         const url = URL.createObjectURL(blob);

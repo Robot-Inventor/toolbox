@@ -18,6 +18,7 @@ const clientAction = async ({ request }: Route.ClientActionArgs): Promise<Action
 
     const lengthAll = [...segmenter.segment(text)].length;
     const lengthWithoutNewlines = [...segmenter.segment(text.replace(/[\r\n]/gu, ""))].length;
+
     return {
         lengthAll,
         lengthWithoutNewlines
@@ -42,6 +43,7 @@ const CharacterCounter = (): ReactNode => {
     const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         const { form } = event.currentTarget;
         if (!form) throw new Error("Form not found");
+
         void fetcher.submit(form);
     };
 

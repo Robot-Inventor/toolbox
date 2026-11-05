@@ -74,6 +74,7 @@ const ExifRemover = (): ReactNode => {
         previewUrl: null as string | null,
         processedUrl: null as string | null
     });
+
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     /**
@@ -106,6 +107,7 @@ const ExifRemover = (): ReactNode => {
     const handleFileSelect = (files: FileList | null): void => {
         const [file] = files ?? [];
         if (!file?.type.startsWith("image/")) return;
+
         void processImage(file);
     };
 
@@ -122,6 +124,7 @@ const ExifRemover = (): ReactNode => {
 
     const handleDownload = (): void => {
         if (!state.processedUrl || !state.originalFile) return;
+
         downloadProcessedImage(state.processedUrl, state.originalFile.name);
     };
 
